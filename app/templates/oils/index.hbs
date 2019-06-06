@@ -1,0 +1,9 @@
+<ListFilter @filter={{action "filterByName"}} as |filteredResults|>
+  <ul class="results">
+    {{#each filteredResults as |oilRec|}}
+      <li><OilListing @oil={{oilRec}} /></li>
+    {{/each}}
+  </ul>
+</ListFilter>
+
+{{outlet}}

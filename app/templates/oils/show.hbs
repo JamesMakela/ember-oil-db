@@ -1,0 +1,66 @@
+<div class="jumbo show-listing">
+  <h2 class="title">{{this.model.name}}</h2>
+
+  <h3>
+    {{#link-to "oils"}}
+      <span class="list-item-label">
+        Back to List
+      </span>
+    {{/link-to}}
+  </h3>
+
+  <div class="content">
+    <div class="detail-section">
+      <div class="detail id">
+        <strong>ID:</strong> {{this.model.id}}
+      </div>
+
+      <div class="detail type">
+        <strong>Type:</strong> {{this.model.productType}}
+      </div>
+
+      <div class="detail location">
+        <strong>Location:</strong> {{this.model.location}}
+      </div>
+
+      <div class="detail categories">
+        <strong>Categories:</strong>
+
+        {{#each this.model.categories as |category|}}
+          <span class="list-item-label">
+            {{category}}
+          </span>
+        {{/each}}
+      </div>
+
+      <div class="detail pour-point">
+        <strong>Pour Point:</strong>
+
+        {{#each this.model.pourPoint as |pp|}}
+          <span class="list-item-label">
+            {{pp}}
+          </span>
+        {{/each}}
+      </div>
+
+      <div class="detail api">
+        <strong>API:</strong>
+
+        {{#each this.model.apis as |api|}}
+          <span class="list-item-label">
+            {{api.gravity}}
+          </span>
+        {{/each}}
+      </div>
+
+      <div class="detail viscosity">
+        <strong>Viscosity:</strong> {{this.model.viscosity}}
+      </div>
+
+      <div class="detail status">
+        <strong>Status:</strong> {{this.model.status}}
+      </div>
+
+    </div>
+  </div>
+</div>
