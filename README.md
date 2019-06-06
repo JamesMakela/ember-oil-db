@@ -1,7 +1,10 @@
 # ember-oil-db
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Web client that uses the OilDatabaseAPI to manage the NOAA  Oil Database
+from a web browser.
+
+This was built using the Ember web application framework to see how well
+it might satisfy the needs of such a web client.
 
 ## Prerequisites
 
