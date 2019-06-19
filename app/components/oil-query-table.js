@@ -26,6 +26,7 @@ export default Component.extend(TableCommon, {
       label: 'Name',
       valuePath: 'name',
       width: '230px',
+      cellComponent: 'oil-name-cell',
       searchable: true,
     }, {
       label: 'Location',
