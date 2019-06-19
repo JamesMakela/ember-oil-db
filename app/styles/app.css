@@ -406,6 +406,9 @@ p {
   padding: .2em .6em;
   font-size: 9pt;
   line-height: 1;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  margin: 2px;
 }
 
 
@@ -415,6 +418,15 @@ p {
 
 .lt-cell {
 }
+
+.status-good {
+  color: green;
+}
+
+.status-bad {
+  color: red;
+}
+
 
 /**
  * Table loader spinner graphic

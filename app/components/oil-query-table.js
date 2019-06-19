@@ -18,9 +18,9 @@ export default Component.extend(TableCommon, {
 
   columns: computed(function() {
     return [{
-      label: 'Status',
+      label: '',
       valuePath: 'status',
-      width: '70px',
+      width: '30px',
       cellComponent: 'status-cell'
     }, {
       label: 'Name',
