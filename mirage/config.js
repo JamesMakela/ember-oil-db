@@ -123,4 +123,5 @@ export default function() {
     return oils.find((oil) => request.params.id === oil._id);
   });
 
+  this.passthrough('http://localhost:9898/**');
 }
