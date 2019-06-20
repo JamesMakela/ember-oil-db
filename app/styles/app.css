@@ -409,6 +409,7 @@ p {
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   margin: 2px;
+  display: inline-block;
 }
 
 
