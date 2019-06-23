@@ -1,0 +1,39 @@
+<div class="detail-section">
+  <div class="detail pour-point">
+    <strong>Pour Point:</strong>
+
+    {{#each oil.pourPoint as |pp|}}
+      <span class="list-item-label">
+        {{pp}}
+      </span>
+    {{else}}
+      No Values
+    {{/each}}
+  </div>
+
+  <div class="detail dvis">
+    <strong>Dynamic Viscosity:</strong>
+    {{#each oil.dvis as |dvis|}}
+      <span class="list-item-label">
+        {{value-unit dvis.viscosity 3}}
+        @
+        {{value-unit dvis.ref_temp 2}}
+      </span>
+    {{else}}
+      No Values
+    {{/each}}
+  </div>
+
+  <div class="detail kvis">
+    <strong>Kinematic Viscosity:</strong>
+    {{#each oil.kvis as |kvis|}}
+      <span class="list-item-label">
+        {{value-unit kvis.viscosity 3}}
+        @
+        {{value-unit kvis.ref_temp 2}}
+      </span>
+    {{else}}
+      No Values
+    {{/each}}
+  </div>
+</div>

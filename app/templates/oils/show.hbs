@@ -8,8 +8,9 @@
       {{/each}}
     </ul>
   {{else}}
-    <strong>Status:</strong>
-    <i class="status-good">Good</i>
+    <strong>
+      Status: <i class="status-good">OK</i>
+    </strong>
   {{/if}}
 
   <h3>
@@ -21,89 +22,18 @@
   </h3>
 
   <div class="content">
-    <div class="detail-section">
-      <div class="detail id">
-        <strong>ID:</strong> {{this.model.id}}
-      </div>
-
-      <div class="detail type">
-        <strong>Type:</strong>
-        {{#if this.model.productType}}
-          {{this.model.productType}}
-        {{else}}
-          None
-        {{/if}}
-      </div>
-
-      <div class="detail location">
-        <strong>Location:</strong>
-        {{#if this.model.location}}
-           {{this.model.location}}
-        {{else}}
-          None
-        {{/if}}
-      </div>
-
-      <div class="detail categories">
-        <strong>Categories:</strong>
-
-        {{#each this.model.categories as |category|}}
-          <span class="list-item-label">
-            {{category}}
-          </span>
-        {{else}}
-          None
-        {{/each}}
-      </div>
-
-      <div class="detail pour-point">
-        <strong>Pour Point:</strong>
-
-        {{#each this.model.pourPoint as |pp|}}
-          <span class="list-item-label">
-            {{pp}}
-          </span>
-        {{else}}
-          No Values
-        {{/each}}
-      </div>
-
-      <div class="detail api">
-        <strong>API:</strong>
-
-        {{#each this.model.apis as |api|}}
-          <span class="list-item-label">
-            {{round-relative api.gravity 2}}
-          </span>
-        {{/each}}
-
-      </div>
-
-      <div class="detail dvis">
-        <strong>Dynamic Viscosity:</strong>
-        {{#each this.model.dvis as |dvis|}}
-          <span class="list-item-label">
-            {{value-unit dvis.viscosity 3}}
-            @
-            {{value-unit dvis.ref_temp 2}}
-          </span>
-        {{else}}
-          No Values
-        {{/each}}
-      </div>
-
-      <div class="detail kvis">
-        <strong>Kinematic Viscosity:</strong>
-        {{#each this.model.kvis as |kvis|}}
-          <span class="list-item-label">
-            {{value-unit kvis.viscosity 3}}
-            @
-            {{value-unit kvis.ref_temp 2}}
-          </span>
-        {{else}}
-          No Values
-        {{/each}}
-      </div>
-    </div>
+    <h3 class="title">General Information</h3>
+    <TabGeneral @oil={{this.model}} />
   </div>
+
+  <div class="content">
+    <h3 class="title">Density</h3>
+    <TabDensity @oil={{this.model}} />
+  </div>
+
+  <div class="content">
+    <h3 class="title">Viscosity</h3>
+    <TabViscosity @oil={{this.model}} />
+  </div>
+
 </div>

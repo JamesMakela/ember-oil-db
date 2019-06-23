@@ -1,0 +1,36 @@
+<div class="detail-section">
+  <div class="detail id">
+    <strong>ID:</strong> {{oil.id}}
+  </div>
+
+  <div class="detail type">
+    <strong>Type:</strong>
+    {{#if oil.productType}}
+      {{oil.productType}}
+    {{else}}
+      None
+    {{/if}}
+  </div>
+
+  <div class="detail location">
+    <strong>Location:</strong>
+    {{#if oil.location}}
+       {{oil.location}}
+    {{else}}
+      None
+    {{/if}}
+  </div>
+
+  <div class="detail categories">
+    <strong>Categories:</strong>
+
+    {{#each oil.categories as |category|}}
+      <span class="list-item-label">
+        {{category}}
+      </span>
+    {{else}}
+      None
+    {{/each}}
+  </div>
+
+</div>
