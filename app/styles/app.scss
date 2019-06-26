@@ -1,0 +1,41 @@
+
+// variable overrides (needs to come before the bootstrap include
+$dark: #17a2b8;  // cyan
+$body-bg: #ddd;
+
+// main bootstrap import
+@import "ember-cli-bootstrap-4/bootstrap";
+@import "controls";
+@import "spinner";
+
+* {
+  margin: 1px;
+  padding: 0;
+}
+
+
+.oil-logo {
+    background: url(../assets/images/oil-barrel-128x128.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+    position: relative;
+}
+
+.noaa-logo {
+    background: url(../assets/images/NOAA_logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 120px;
+    width: 120px;
+    position: relative;
+}
+
+.status-good {
+  color: $green;
+}
+
+.status-bad {
+  color: $red;
+}

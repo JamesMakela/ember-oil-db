@@ -3,7 +3,7 @@
     <strong>Pour Point:</strong>
 
     {{#each oil.pourPoint as |pp|}}
-      <span class="list-item-label">
+      <span class="badge badge-dark">
         {{pp}}
       </span>
     {{else}}
@@ -14,7 +14,7 @@
   <div class="detail dvis">
     <strong>Dynamic Viscosity:</strong>
     {{#each oil.dvis as |dvis|}}
-      <span class="list-item-label">
+      <span class="badge badge-dark">
         {{value-unit dvis.viscosity 3}}
         @
         {{value-unit dvis.ref_temp 2}}
@@ -27,7 +27,7 @@
   <div class="detail kvis">
     <strong>Kinematic Viscosity:</strong>
     {{#each oil.kvis as |kvis|}}
-      <span class="list-item-label">
+      <span class="badge badge-dark">
         {{value-unit kvis.viscosity 3}}
         @
         {{value-unit kvis.ref_temp 2}}

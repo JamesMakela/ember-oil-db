@@ -15,7 +15,7 @@
   <div class="detail location">
     <strong>Location:</strong>
     {{#if oil.location}}
-       {{oil.location}}
+      {{oil.location}}
     {{else}}
       None
     {{/if}}
@@ -25,7 +25,7 @@
     <strong>Categories:</strong>
 
     {{#each oil.categories as |category|}}
-      <span class="list-item-label">
+      <span class="badge badge-dark">
         {{category}}
       </span>
     {{else}}

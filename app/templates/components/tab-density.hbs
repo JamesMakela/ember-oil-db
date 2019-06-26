@@ -3,7 +3,7 @@
     <strong>API:</strong>
 
     {{#each oil.apis as |api|}}
-      <span class="list-item-label">
+      <span class="badge badge-dark">
         {{round-relative api.gravity 2}}
       </span>
     {{/each}}
@@ -13,7 +13,7 @@
   <div class="detail density">
     <strong>Density:</strong>
     {{#each oil.densities as |density|}}
-      <span class="list-item-label">
+      <span class="badge badge-dark">
         {{value-unit density.density 2}}
         @
         {{value-unit density.ref_temp 2}}
