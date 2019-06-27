@@ -10,17 +10,42 @@
 
   </div>
 
-  <div class="detail density">
+  <div class="table-responsive">
     <strong>Density:</strong>
-    {{#each oil.densities as |density|}}
-      <span class="badge badge-dark">
-        {{value-unit density.density 2}}
-        @
-        {{value-unit density.ref_temp 2}}
-      </span>
-    {{else}}
-      No Values
-    {{/each}}
+
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".multi-collapse"
+             aria-controls="density-tbody density-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Density</th>
+          <th scope="col">Temperature</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="density-tbody" class="collapse multi-collapse">
+        {{#each oil.densities as |density index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit density.density 2}}</td>
+            <td>{{value-unit density.ref_temp 2}}</td>
+            <td>{{density.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="density-placeholder" class="collapse show multi-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+
   </div>
+
 
 </div>

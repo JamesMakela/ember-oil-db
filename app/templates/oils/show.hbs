@@ -33,14 +33,60 @@
     <TabGeneral @oil={{this.model}} />
   </div>
 
-  <div class="content">
-    <h3 class="title">Density</h3>
-    <TabDensity @oil={{this.model}} />
+
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-physical-tab" href="#nav-physical" aria-controls="nav-physical"
+         data-toggle="tab" role="tab" aria-selected="true">
+        Physical Properties
+      </a>
+      <a class="nav-item nav-link" id="nav-distillation-tab" href="#nav-distillation" aria-controls="nav-distillation"
+         data-toggle="tab" role="tab" aria-selected="false">
+        Distillation Cuts
+      </a>
+      <a class="nav-item nav-link" id="nav-composition-tab" href="#nav-composition" aria-controls="nav-composition"
+         data-toggle="tab" role="tab" aria-selected="false">
+        Composition
+      </a>
+      <a class="nav-item nav-link" id="nav-environmental-tab" href="#nav-environmental" aria-controls="nav-environmental"
+         data-toggle="tab" role="tab" aria-selected="false">
+        Environmental Behavior
+      </a>
+      <a class="nav-item nav-link" id="nav-ccme-tab" href="#nav-ccme" aria-controls="nav-ccme"
+         data-toggle="tab" role="tab" aria-selected="false">
+        CCME
+      </a>
+    </div>
+  </nav>
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-physical" aria-labelledby="nav-physical-tab" role="tabpanel">
+      our physical properties...    
+      <div class="container-fluid">
+        <h3 class="title">Density</h3>
+        <TabDensity @oil={{this.model}} class="row"/>
+
+        <div class="row">
+          <h3 class="title">Viscosity</h3>
+          <TabViscosity @oil={{this.model}} />
+        </div>
+      </div>
+    
+    </div>
+    <div class="tab-pane fade" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
+      our distillation...
+    </div>
+    <div class="tab-pane fade" id="nav-composition" aria-labelledby="nav-composition-tab" role="tabpanel">
+      our composition...
+    </div>
+    <div class="tab-pane fade" id="nav-environmental" aria-labelledby="nav-environmental-tab" role="tabpanel">
+      our environmental behavior...
+    </div>
+    <div class="tab-pane fade" id="nav-ccme" aria-labelledby="nav-ccme-tab" role="tabpanel">
+      our CCME...
+    </div>
   </div>
 
-  <div class="content">
-    <h3 class="title">Viscosity</h3>
-    <TabViscosity @oil={{this.model}} />
-  </div>
+
 
 </div>

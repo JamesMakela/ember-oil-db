@@ -1,36 +1,44 @@
-<div class="detail-section">
-  <div class="detail id">
-    <strong>ID:</strong> {{oil.id}}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-lg-2">
+      <strong>ID:</strong> {{oil.id}}
+    </div>
+
+    <div class="col-sm">
+      <strong>Location:</strong>
+      {{#if oil.location}}
+        {{oil.location}}
+      {{else}}
+        None
+      {{/if}}
+    </div>
+
   </div>
 
-  <div class="detail type">
-    <strong>Type:</strong>
-    {{#if oil.productType}}
-      {{oil.productType}}
-    {{else}}
-      None
-    {{/if}}
+
+  <div class="row">
+    <div class="col-sm-4 col-lg-2">
+      <strong>Type:</strong>
+      {{#if oil.productType}}
+        {{oil.productType}}
+      {{else}}
+        None
+      {{/if}}
+    </div>  
+
+    <div class="col-sm">
+      <strong>Categories:</strong>
+
+      {{#each oil.categories as |category|}}
+        <span class="badge badge-dark">
+          {{category}}
+        </span>
+      {{else}}
+        None
+      {{/each}}
+    </div>
+
   </div>
 
-  <div class="detail location">
-    <strong>Location:</strong>
-    {{#if oil.location}}
-      {{oil.location}}
-    {{else}}
-      None
-    {{/if}}
-  </div>
-
-  <div class="detail categories">
-    <strong>Categories:</strong>
-
-    {{#each oil.categories as |category|}}
-      <span class="badge badge-dark">
-        {{category}}
-      </span>
-    {{else}}
-      None
-    {{/each}}
-  </div>
 
 </div>

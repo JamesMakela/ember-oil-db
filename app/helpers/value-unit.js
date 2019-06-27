@@ -7,13 +7,20 @@ export function valueUnit([valueUnit, precision, ...rest]) {
   let u = valueUnit.unit;
   let sep = ' ';
 
-  let tempUnits = new Set(['F', 'C', 'K']);
+  // SI Kelvin units don't have a degree, so are not included here.
+  let tempUnits = new Set(['F', 'C']);
 
   if (tempUnits.has(u)) {
     sep = '°';
+    return `${v}${sep}${u}`;
+  }
+  else {
+    let new_u = u.replace('^2', '\u00B2')
+    new_u = new_u.replace('^3', '\u00B3')
+
+    return `${v}${sep}${new_u}`;
   }
 
-  return `${v}${sep}${u}`;
 }
 
 export default helper(valueUnit);
