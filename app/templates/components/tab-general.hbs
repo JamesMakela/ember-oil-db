@@ -12,13 +12,12 @@
         None
       {{/if}}
     </div>
-
   </div>
-
 
   <div class="row">
     <div class="col-sm-4 col-lg-2">
       <strong>Type:</strong>
+
       {{#if oil.productType}}
         {{oil.productType}}
       {{else}}
@@ -40,5 +39,19 @@
 
   </div>
 
-
+  <div class="row">
+    <div class="col-sm">
+      {{#if oil.status}}
+        <ul>
+          {{#each oil.status as |stat|}}
+            <li><i class="status-bad">{{stat}}</i></li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <strong>
+          Status: <i class="status-good">OK</i>
+        </strong>
+      {{/if}}
+    </div>
+  </div>
 </div>

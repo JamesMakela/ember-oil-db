@@ -7,33 +7,80 @@
         {{pp}}
       </span>
     {{else}}
-      No Values
+      <span>
+        No Values
+      </span>
     {{/each}}
   </div>
 
-  <div class="detail dvis">
+  <div class="table-responsive">
     <strong>Dynamic Viscosity:</strong>
-    {{#each oil.dvis as |dvis|}}
-      <span class="badge badge-dark">
-        {{value-unit dvis.viscosity 3}}
-        @
-        {{value-unit dvis.ref_temp 2}}
-      </span>
-    {{else}}
-      No Values
-    {{/each}}
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".dvis-row-collapse"
+             aria-controls="dvis-tbody dvis-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Viscosity</th>
+          <th scope="col">Temperature</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="dvis-tbody" class="collapse dvis-row-collapse">
+        {{#each oil.dvis as |dvis index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit dvis.viscosity 3}}</td>
+            <td>{{value-unit dvis.ref_temp 2}}</td>
+            <td>{{dvis.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="dvis-placeholder" class="collapse show dvis-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="detail kvis">
+  <div class="table-responsive">
     <strong>Kinematic Viscosity:</strong>
-    {{#each oil.kvis as |kvis|}}
-      <span class="badge badge-dark">
-        {{value-unit kvis.viscosity 3}}
-        @
-        {{value-unit kvis.ref_temp 2}}
-      </span>
-    {{else}}
-      No Values
-    {{/each}}
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".kvis-row-collapse"
+             aria-controls="kvis-tbody kvis-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Viscosity</th>
+          <th scope="col">Temperature</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="kvis-tbody" class="collapse kvis-row-collapse">
+        {{#each oil.kvis as |kvis index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit kvis.viscosity 3}}</td>
+            <td>{{value-unit kvis.ref_temp 2}}</td>
+            <td>{{kvis.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+        <tbody id="kvis-placeholder" class="collapse show kvis-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
+
 </div>
