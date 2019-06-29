@@ -51,22 +51,60 @@
       <div class="container">
         <div class="row">
           <div class="container col-lg-5">
-            <h3 class="title">Density</h3>
             <TabDensity @oil={{this.model}} class="row"/>
           </div>
 
           <div class="container col-lg-5">
-            <h3 class="title">Viscosity</h3>
-            <TabViscosity @oil={{this.model}} class="row"/>
+            <TabIft @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            <TabKinematicViscosity @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            <TabDynamicViscosity @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            <TabPourPoint @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            <TabFlashPoint @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            <TabAdhesion @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            {{! Placeholder div so that the last container lines up
+                with the first column.  Only necessary for an odd number
+                of containers }}
           </div>
 
         </div>
       </div>
+    </div>
 
-    </div>
     <div class="tab-pane fade" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
-      our distillation...
+      <div class="container">
+        <div class="row">
+          <div class="container col-lg-5">
+            <TabDistillation @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            {{! Placeholder div so that the last container lines up
+                with the first column.  Only necessary for an odd number
+                of containers }}
+          </div>
+
+        </div>
+      </div>
     </div>
+
     <div class="tab-pane fade" id="nav-composition" aria-labelledby="nav-composition-tab" role="tabpanel">
       our composition...
     </div>

@@ -1,0 +1,37 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>Distillation Cuts:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".cut-row-collapse"
+             aria-controls="cut-tbody cut-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fraction</th>
+          <th scope="col">Vapor Temperature</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="cut-tbody" class="collapse cut-row-collapse">
+        {{#each oil.cuts as |cut index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit cut.fraction 3}}</td>
+            <td>{{value-unit cut.vapor_temp 2}}</td>
+            <td>{{cut.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="cut-placeholder" class="collapse show cut-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

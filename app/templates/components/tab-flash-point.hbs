@@ -1,0 +1,16 @@
+<div class="detail-section">
+  <div class="detail flash-point">
+    <strong>Flash Point:</strong>
+
+    {{#each oil.flashPoint as |fp|}}
+      <span class="badge badge-dark">
+        {{fp}}
+      </span>
+    {{else}}
+      <span>
+        No Values
+      </span>
+    {{/each}}
+  </div>
+
+</div>

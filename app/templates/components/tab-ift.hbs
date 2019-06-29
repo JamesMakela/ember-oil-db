@@ -1,40 +1,39 @@
 <div class="detail-section">
   <div class="table-responsive">
-    <strong>Density:</strong>
-
+    <strong>Interfacial Tension:</strong>
 
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
-             data-target=".density-row-collapse"
-             aria-controls="density-tbody density-placeholder"
+             data-target=".ift-row-collapse"
+             aria-controls="ift-tbody ift-placeholder"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Density</th>
+          <th scope="col">Interface</th>
+          <th scope="col">Tension</th>
           <th scope="col">Temperature</th>
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="density-tbody" class="collapse density-row-collapse">
-        {{#each oil.densities as |density index|}}
+      <tbody id="ift-tbody" class="collapse ift-row-collapse">
+        {{#each oil.ifts as |ift index|}}
           <tr>
             <th scope="row">{{index}}</th>
-            <td>{{value-unit density.density 2}}</td>
-            <td>{{value-unit density.ref_temp 2}}</td>
-            <td>{{density.weathering}}</td>
+            <td>{{ift.interface}}</td>
+            <td>{{value-unit ift.tension 3}}</td>
+            <td>{{value-unit ift.ref_temp 2}}</td>
+            <td>{{ift.weathering}}</td>
           </tr>
         {{else}}
           No Values
         {{/each}}
       </tbody>
-      <tbody id="density-placeholder" class="collapse show density-row-collapse">
+      <tbody id="ift-placeholder" class="collapse show ift-row-collapse">
         <tr>
           <th scope="row">&#x2026;</th>
         </tr>
       </tbody>
     </table>
-
   </div>
-
 
 </div>

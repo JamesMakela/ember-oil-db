@@ -1,0 +1,16 @@
+<div class="detail-section">
+  <div class="detail pour-point">
+    <strong>Pour Point:</strong>
+
+    {{#each oil.pourPoint as |pp|}}
+      <span class="badge badge-dark">
+        {{pp}}
+      </span>
+    {{else}}
+      <span>
+        No Values
+      </span>
+    {{/each}}
+  </div>
+
+</div>

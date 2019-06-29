@@ -1,40 +1,37 @@
 <div class="detail-section">
   <div class="table-responsive">
-    <strong>Density:</strong>
-
+    <strong>Kinematic Viscosity:</strong>
 
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
-             data-target=".density-row-collapse"
-             aria-controls="density-tbody density-placeholder"
+             data-target=".kvis-row-collapse"
+             aria-controls="kvis-tbody kvis-placeholder"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Density</th>
+          <th scope="col">Viscosity</th>
           <th scope="col">Temperature</th>
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="density-tbody" class="collapse density-row-collapse">
-        {{#each oil.densities as |density index|}}
+      <tbody id="kvis-tbody" class="collapse kvis-row-collapse">
+        {{#each oil.kvis as |kvis index|}}
           <tr>
             <th scope="row">{{index}}</th>
-            <td>{{value-unit density.density 2}}</td>
-            <td>{{value-unit density.ref_temp 2}}</td>
-            <td>{{density.weathering}}</td>
+            <td>{{value-unit kvis.viscosity 3}}</td>
+            <td>{{value-unit kvis.ref_temp 2}}</td>
+            <td>{{kvis.weathering}}</td>
           </tr>
         {{else}}
           No Values
         {{/each}}
       </tbody>
-      <tbody id="density-placeholder" class="collapse show density-row-collapse">
+        <tbody id="kvis-placeholder" class="collapse show kvis-row-collapse">
         <tr>
           <th scope="row">&#x2026;</th>
         </tr>
       </tbody>
     </table>
-
   </div>
-
 
 </div>

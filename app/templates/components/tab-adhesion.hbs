@@ -1,0 +1,35 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>Adhesion:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".adhesion-row-collapse"
+             aria-controls="adhesion-tbody adhesion-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Adhesion</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="adhesion-tbody" class="collapse adhesion-row-collapse">
+        {{#each oil.adhesions as |adhesion index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit adhesion.adhesion 3}}</td>
+            <td>{{adhesion.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="adhesion-placeholder" class="collapse show adhesion-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
