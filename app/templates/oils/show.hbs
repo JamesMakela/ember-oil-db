@@ -23,11 +23,11 @@
 
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-physical-tab" href="#nav-physical" aria-controls="nav-physical"
+      <a class="nav-item nav-link" id="nav-physical-tab" href="#nav-physical" aria-controls="nav-physical"
          data-toggle="tab" role="tab" aria-selected="true">
         Physical Properties
       </a>
-      <a class="nav-item nav-link" id="nav-distillation-tab" href="#nav-distillation" aria-controls="nav-distillation"
+      <a class="nav-item nav-link active" id="nav-distillation-tab" href="#nav-distillation" aria-controls="nav-distillation"
          data-toggle="tab" role="tab" aria-selected="false">
         Distillation Cuts
       </a>
@@ -47,7 +47,7 @@
   </nav>
 
   <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active" id="nav-physical" aria-labelledby="nav-physical-tab" role="tabpanel">
+    <div class="tab-pane fade" id="nav-physical" aria-labelledby="nav-physical-tab" role="tabpanel">
       <div class="container">
         <div class="row">
           <div class="container col-lg-5">
@@ -88,7 +88,7 @@
       </div>
     </div>
 
-    <div class="tab-pane fade" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
+    <div class="tab-pane fade show active" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
       <div class="container">
         <div class="row">
           <div class="container col-lg-5">
@@ -96,9 +96,7 @@
           </div>
 
           <div class="container col-lg-5">
-            {{! Placeholder div so that the last container lines up
-                with the first column.  Only necessary for an odd number
-                of containers }}
+            <GraphDistillation @oil={{this.model}} class="row"/>
           </div>
 
         </div>
