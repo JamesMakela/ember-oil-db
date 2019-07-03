@@ -5,7 +5,6 @@ import { scaleLinear } from 'd3-scale';
 import { axisLeft, axisBottom } from 'd3-axis';
 import { format } from 'd3-format';
 import { line } from 'd3-shape';
-import { circle } from 'd3-geo';
 
 import LineChart from './line-chart';
 
@@ -16,12 +15,25 @@ export default LineChart.extend({
   initData() {
     let cuts = this.oil.cuts;
     //cuts.map((c) => ([c.fraction.value, c.vapor_temp.value]));
+    let data = [];
 
-    this.set('data', [{
-       name: 'Cuts',
-       values: cuts.map((c) => ([c.vapor_temp.value, c.fraction.value])),
-       color: 'red'
-     }]);
+    let distinct_w = Array.from(new Set(cuts.map(c => c.weathering)));
+    distinct_w.forEach(function(w) {
+      let weathered_cuts = cuts.filter((c) => (c.weathering === w));
+
+      data.push({
+        name: w,
+        values: weathered_cuts.map((c) => ([c.vapor_temp.value, c.fraction.value])),
+        color: 'grey'
+      });
+    });
+
+    data[0].color = 'green';
+    if (data.length > 1) {
+      data.slice(-1)[0].color = 'red';
+    }
+
+    this.set('data', data);
   },
 
   xScale: computed('data.[]', 'chartWidth', function() {
@@ -72,10 +84,11 @@ export default LineChart.extend({
     svg.selectAll('.chart__axis--x')
       .append("text")
       .attr("x", width / 2.0)
-      .attr("y", 35)
+      .attr("y", 40)
       .attr("dy", ".5em")
+      .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
-      .style("text-anchor", "end")
+      .style("text-anchor", "middle")
       .text("Vapor Temperature");
   },
 
@@ -106,26 +119,27 @@ export default LineChart.extend({
       .append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -height / 2.0)
-      .attr("y", -30)
+      .attr("y", -40)
       .attr("dy", ".5em")
+      .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
-      .style("text-anchor", "end")
+      .style("text-anchor", "middle")
       .text("Fraction");
   },
 
   drawData: function() {
     var data = this.get('data');
-    var x = this.get('xScale');
-    var y = this.get('yScale');
+    var xScale = this.get('xScale');
+    var yScale = this.get('yScale');
 
     var svg = this.get('chartSVG');
 
     var chartLine = line()
       .x(function(d) {
-        return x(d[0]);
+        return xScale(d[0]);
       })
       .y(function(d) {
-        return y(d[1]);
+        return yScale(d[1]);
       });
 
     var lines = svg
@@ -148,17 +162,54 @@ export default LineChart.extend({
 
     var circles = svg
       .selectAll("circle")
-      .data(data[0].values.map((p) => ( {'x': p[0], 'y': p[1]} )));
+      .data(
+        data.map((d) => (d.values)).flat()
+        .map((p) => ( {'x': p[0], 'y': p[1]} ))
+      );
 
     // Append the new ones
     circles
       .enter()
       .append("circle")
-      .attr("cx", function (d) { return x(d.x); })
-      .attr("cy", function (d) { return y(d.y); })
-      .attr("r", function () { return 4; })
-      .style("fill", function() { return 'steelblue'; });
+      .attr("cx", function (d) { return xScale(d.x); })
+      .attr("cy", function (d) { return yScale(d.y); })
+      .attr("r", 3)
+      .style("fill", 'steelblue');
 
+  },
+
+  drawLegend: function() {
+    var data = this.get('data');
+
+    var svg = this.get('chartSVG');
+
+    var legend = svg.append("g")
+      .attr("class", "legend")
+      .attr("height", 100)
+      .attr("width", 100)
+      .attr('transform', `translate(0, 0)`);
+
+    legend.selectAll('rect')
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("x", 10)
+      .attr("y", function(d, i){return 5 + (i * 10);})
+      .attr("width", 10)
+      .attr("height", 2)
+      .style("fill", (d) => d.color);
+
+    legend.selectAll('text')
+      .data(data)
+      .enter()
+      .append("text")
+      .attr("x", 25)
+      .attr("y", function(d, i){return 5 + (i * 10);})
+      .attr("dy", ".35em")
+      .attr("font-size", ".7em")
+      .attr("fill", "currentColor")
+      .style("text-anchor", "start")
+      .text(function(d) {return `w=${d.name}`;});
   },
 
 });

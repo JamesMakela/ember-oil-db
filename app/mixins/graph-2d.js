@@ -19,7 +19,7 @@ export default Mixin.create({
   }),
 
   chartHeight: computed(function() {
-    var height = 400;
+    var height = 300;
     var margins = this.get('chartMargins');
     return height - margins.top - margins.bottom;
   }),
@@ -59,11 +59,11 @@ export default Mixin.create({
     var chartEl = this.$().get(0);
     chartEl.innerHTML = '';
 
-    // Actually create the SVG element
     this.addSVG();
 
-    // Draw the data
     this.drawData();
+
+    this.drawLegend();
 
     // Create the axes
     this.createXAxisElement();
@@ -95,7 +95,6 @@ export default Mixin.create({
   createYAxisElement: function() {
     var svg = this.get('chartSVG');
     var scale = this.get('yScale');
-    var height = this.get('chartHeight');
     var ticks = 6;
 
     var minMax = scale.domain();

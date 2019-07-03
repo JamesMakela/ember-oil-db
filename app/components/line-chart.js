@@ -101,6 +101,10 @@ export default Component.extend(Graph2d, {
       .attr('fill', 'none');
   },
 
+  drawLegend: function() {
+    // no legend for the basic line chart.
+  },
+
   // -----------------------------------------------------------------------
   // LIFECYCLE HOOKS
   // These are special functions that are called by ember at different stages
