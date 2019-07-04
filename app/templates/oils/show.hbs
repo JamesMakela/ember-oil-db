@@ -50,35 +50,35 @@
     <div class="tab-pane fade" id="nav-physical" aria-labelledby="nav-physical-tab" role="tabpanel">
       <div class="container">
         <div class="row">
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabDensity @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabIft @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabKinematicViscosity @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabDynamicViscosity @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabPourPoint @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabFlashPoint @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabAdhesion @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             {{! Placeholder div so that the last container lines up
                 with the first column.  Only necessary for an odd number
                 of containers }}
@@ -91,11 +91,11 @@
     <div class="tab-pane fade show active" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
       <div class="container">
         <div class="row">
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <TabDistillation @oil={{this.model}} class="row"/>
           </div>
 
-          <div class="container col-lg-5">
+          <div class="col-lg-5">
             <strong>Distillation Graph:</strong>
 
             <GraphDistillation @oil={{this.model}} class="row"/>
@@ -106,7 +106,28 @@
     </div>
 
     <div class="tab-pane fade" id="nav-composition" aria-labelledby="nav-composition-tab" role="tabpanel">
-      our composition...
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4">
+            <TabBenzene @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="col-lg-6">
+            <TabBenzeneBtex @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="col-11">
+            <TabBenzeneC4c6 @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="container col-lg-5">
+            {{! Placeholder div so that the last container lines up
+                with the first column.  Only necessary for an odd number
+                of containers }}
+          </div>
+
+        </div>
+      </div>
     </div>
     <div class="tab-pane fade" id="nav-environmental" aria-labelledby="nav-environmental-tab" role="tabpanel">
       our environmental behavior...

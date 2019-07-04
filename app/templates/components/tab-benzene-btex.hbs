@@ -1,0 +1,41 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>BTEX Group:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".btex-row-collapse"
+             aria-controls="btex-tbody btex-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Toluene</th>
+          <th scope="col">Ethylbenzene</th>
+          <th scope="col">m&p-Xylene</th>
+          <th scope="col">o-Xylene</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="btex-tbody" class="collapse btex-row-collapse">
+        {{#each oil.benzene as |benzene index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit benzene.toluene 2}}</td>
+            <td>{{value-unit benzene.ethylbenzene 2}}</td>
+            <td>{{value-unit benzene.m_p_xylene 2}}</td>
+            <td>{{value-unit benzene.o_xylene 2}}</td>
+            <td>{{benzene.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="btex-placeholder" class="collapse show btex-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
