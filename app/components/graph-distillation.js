@@ -17,7 +17,14 @@ export default LineChart.extend({
     //cuts.map((c) => ([c.fraction.value, c.vapor_temp.value]));
     let data = [];
 
-    let distinct_w = Array.from(new Set(cuts.map(c => c.weathering)));
+    let distinct_w = [];
+    try {
+      distinct_w = Array.from(new Set(cuts.map(c => c.weathering)));
+    }
+    catch(err) {
+      console.warning('could not get oil distillation cuts');
+    }
+
     distinct_w.forEach(function(w) {
       let weathered_cuts = cuts.filter((c) => (c.weathering === w));
 
@@ -28,7 +35,10 @@ export default LineChart.extend({
       });
     });
 
-    data[0].color = 'green';
+    if (data.length > 0) {
+      data[0].color = 'green';
+    }
+
     if (data.length > 1) {
       data.slice(-1)[0].color = 'red';
     }
@@ -40,7 +50,8 @@ export default LineChart.extend({
     var data = this.get('data');
     var width = this.get('chartWidth');
 
-    var xValues = data[0].values.map((v) => (v[0]));
+    var xValues = data.length > 0 ? data[0].values.map((v) => (v[0])) : [0, 100];
+
     var minMax = extent(xValues);
 
     return scaleLinear()
@@ -52,7 +63,7 @@ export default LineChart.extend({
     var data = this.get('data');
     var height = this.get('chartHeight');
 
-    var yValues = data[0].values.map((v) => (v[1]));
+    var yValues = data.length > 0 ? data[0].values.map((v) => (v[1])) : [0, 1.0];
     var minMax = extent(yValues);
 
     return scaleLinear()

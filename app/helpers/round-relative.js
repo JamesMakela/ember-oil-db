@@ -1,7 +1,10 @@
 import { helper } from '@ember/component/helper';
 
 export function roundRelative([num, tol, ...rest]) {
-  if (num > 1.0) {
+  if (num === 0) {
+    return 0.0;
+  }
+  else if (num > 1.0) {
     return Math.floor(num * 10 ** tol) / 10 ** tol;
   }
   else {
