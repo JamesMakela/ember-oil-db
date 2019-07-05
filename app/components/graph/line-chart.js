@@ -5,7 +5,7 @@ import { extent } from 'd3-array';
 import { scaleLinear, scaleOrdinal } from 'd3-scale';
 import { line } from 'd3-shape';
 
-import Graph2d from '../mixins/graph-2d';
+import Graph2d from 'ember-oil-db/mixins/graph-2d';
 
 export default Component.extend(Graph2d, {
   data: null,
