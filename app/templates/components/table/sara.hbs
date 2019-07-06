@@ -1,0 +1,37 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>SARA Total Fractions:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".sara-row-collapse"
+             aria-controls="sara-tbody sara-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">SARA Type</th>
+          <th scope="col">Fraction</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="sara-tbody" class="collapse sara-row-collapse">
+        {{#each oil.saraTotalFractions as |sara index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{sara.sara_type}}</td>
+            <td>{{value-unit sara.fraction 3}}</td>
+            <td>{{sara.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="sara-placeholder" class="collapse show sara-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
