@@ -3,7 +3,7 @@ import { computed } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import { task } from 'ember-concurrency';
 
-import TableCommon from '../mixins/table-common';
+import TableCommon from 'ember-oil-db/mixins/table-common';
 
 
 export default Component.extend(TableCommon, {
@@ -21,12 +21,12 @@ export default Component.extend(TableCommon, {
       label: '',
       valuePath: 'status',
       width: '30px',
-      cellComponent: 'status-cell'
+      cellComponent: 'table/cell/status'
     }, {
       label: 'Name',
       valuePath: 'name',
       width: '230px',
-      cellComponent: 'oil-name-cell',
+      cellComponent: 'table/cell/oil-name',
       searchable: true,
     }, {
       label: 'Location',
@@ -41,12 +41,12 @@ export default Component.extend(TableCommon, {
     }, {
       label: 'API',
       valuePath: 'apis',
-      cellComponent: 'api-cell',
+      cellComponent: 'table/cell/api',
       width: '164px'
     }, {
       label: 'Viscosity',
       valuePath: 'viscosity',
-      cellComponent: 'viscosity-cell',
+      cellComponent: 'table/cell/viscosity',
       width: '120px'
     }, {
       label: 'Categories',
