@@ -1,0 +1,35 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>Water Content:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".water-row-collapse"
+             aria-controls="water-tbody water-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fraction</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="water-tbody" class="collapse water-row-collapse">
+        {{#each oil.water as |water index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit water.fraction 3}}</td>
+            <td>{{water.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="water-placeholder" class="collapse show water-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

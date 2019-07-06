@@ -108,6 +108,18 @@
     <div class="tab-pane fade" id="nav-composition" aria-labelledby="nav-composition-tab" role="tabpanel">
       <div class="container">
         <div class="row">
+          <div class="col-4">
+            <Table::Water @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="col-4">
+            <Table::Wax @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="col-4">
+            <Table::Sulfur @oil={{this.model}} class="row"/>
+          </div>
+
           <div class="col-lg-4">
             <Table::Benzene @oil={{this.model}} class="row"/>
           </div>

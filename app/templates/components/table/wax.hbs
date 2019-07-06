@@ -1,0 +1,35 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>Wax Content:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".wax-row-collapse"
+             aria-controls="wax-tbody wax-placeholder"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fraction</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="wax-tbody" class="collapse wax-row-collapse">
+        {{#each oil.wax as |wax index|}}
+          <tr>
+            <th scope="row">{{index}}</th>
+            <td>{{value-unit wax.fraction 3}}</td>
+            <td>{{wax.weathering}}</td>
+          </tr>
+        {{else}}
+          No Values
+        {{/each}}
+      </tbody>
+      <tbody id="wax-placeholder" class="collapse show wax-row-collapse">
+        <tr>
+          <th scope="row">&#x2026;</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
