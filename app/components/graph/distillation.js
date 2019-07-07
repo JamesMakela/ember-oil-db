@@ -17,12 +17,12 @@ export default LineChart.extend({
     //cuts.map((c) => ([c.fraction.value, c.vapor_temp.value]));
     let data = [];
 
-    let distinct_w = [];
+    let distinct_w;
     try {
       distinct_w = Array.from(new Set(cuts.map(c => c.weathering)));
     }
     catch(err) {
-      console.warning('could not get oil distillation cuts');
+      distinct_w = [];
     }
 
     distinct_w.forEach(function(w) {
