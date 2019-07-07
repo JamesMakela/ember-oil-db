@@ -3,6 +3,10 @@ import { roundRelative } from './round-relative';
 
 
 export function valueUnit([valueUnit, precision, ...rest]) {
+  if (valueUnit == null) {
+      return '';
+  }
+
   let v = roundRelative([valueUnit.value, precision]);
   let u = valueUnit.unit;
   let sep = ' ';
