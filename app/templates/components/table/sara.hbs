@@ -5,7 +5,7 @@
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
              data-target=".sara-row-collapse"
-             aria-controls="sara-tbody sara-placeholder"
+             aria-controls="sara-tbody"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
@@ -14,25 +14,24 @@
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="sara-tbody" class="collapse sara-row-collapse">
+      <tbody id="sara-tbody">
         {{#each oil.saraTotalFractions as |sara index|}}
-          <tr>
+          <tr class="collapse sara-row-collapse">
             <th scope="row">{{index}}</th>
             <td>{{sara.sara_type}}</td>
             <td>{{value-unit sara.fraction 3}}</td>
             <td>{{sara.weathering}}</td>
           </tr>
         {{/each}}
-      </tbody>
-      {{#if oil.saraTotalFractions}}
-        <tbody id="sara-placeholder" class="collapse show sara-row-collapse">
-          <tr>
+
+        {{#if oil.saraTotalFractions}}
+          <tr class="collapse show sara-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
-        </tbody>
-      {{else}}
-        <tbody><tr><td>Empty</td></tr></tbody>
-      {{/if}}
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
+      </tbody>
     </table>
   </div>
 

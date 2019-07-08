@@ -5,7 +5,7 @@
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
              data-target=".conradson-row-collapse"
-             aria-controls="conradson-tbody conradson-placeholder"
+             aria-controls="conradson-tbody"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
@@ -14,9 +14,9 @@
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="conradson-tbody" class="collapse conradson-row-collapse">
+      <tbody id="conradson-tbody">
         {{#each oil.conradson as |conradson index|}}
-          <tr>
+          <tr class="collapse conradson-row-collapse">
             <th scope="row">{{index}}</th>
             {{#if conradson.crude}}
               <td>Crude</td>
@@ -28,16 +28,15 @@
             <td>{{conradson.weathering}}</td>
           </tr>
         {{/each}}
-      </tbody>
-      {{#if oil.conradson}}
-        <tbody id="conradson-placeholder" class="collapse show conradson-row-collapse">
-          <tr>
+
+        {{#if oil.conradson}}
+          <tr class="collapse show conradson-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
-        </tbody>
-      {{else}}
-        <tbody><tr><td>Empty</td></tr></tbody>
-      {{/if}}
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
+      </tbody>
     </table>
   </div>
 

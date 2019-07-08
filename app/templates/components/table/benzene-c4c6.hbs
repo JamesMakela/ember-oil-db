@@ -5,7 +5,7 @@
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
              data-target=".c4c6-row-collapse"
-             aria-controls="c4c6-tbody c4c6-placeholder"
+             aria-controls="c4c6-tbody"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
@@ -24,9 +24,9 @@
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="c4c6-tbody" class="collapse c4c6-row-collapse">
+      <tbody id="c4c6-tbody">
         {{#each oil.benzene as |benzene index|}}
-          <tr>
+          <tr class="collapse c4c6-row-collapse">
             <th scope="row">{{index}}</th>
             <td>{{value-unit benzene.amylbenzene 2}}</td>
             <td>{{value-unit benzene.propylebenzene 2}}</td>
@@ -43,16 +43,15 @@
             <td>{{benzene.weathering}}</td>
           </tr>
         {{/each}}
-      </tbody>
-      {{#if oil.benzene}}
-        <tbody id="c4c6-placeholder" class="collapse show c4c6-row-collapse">
-          <tr>
+
+        {{#if oil.benzene}}
+          <tr class="collapse show c4c6-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
-        </tbody>
-      {{else}}
-        <tbody><tr><td>Empty</td></tr></tbody>
-      {{/if}}
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
+      </tbody>
     </table>
   </div>
 

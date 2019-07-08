@@ -2,10 +2,11 @@
   <div class="table-responsive">
     <strong>Water Content:</strong>
 
+
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
              data-target=".water-row-collapse"
-             aria-controls="water-tbody water-placeholder"
+             aria-controls="water-tbody"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
@@ -13,24 +14,23 @@
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="water-tbody" class="collapse water-row-collapse">
+      <tbody id="water-tbody">
         {{#each oil.water as |water index|}}
-          <tr>
+          <tr class="collapse water-row-collapse">
             <th>{{index}}</th>
             <td>{{value-unit water.fraction 3}}</td>
             <td>{{water.weathering}}</td>
           </tr>
         {{/each}}
-      </tbody>
-      {{#if oil.water}}
-        <tbody id="water-placeholder" class="collapse show water-row-collapse">
-          <tr>
+
+        {{#if oil.water}}
+          <tr class="collapse show water-row-collapse">
             <th>&#x2026;</th>
           </tr>
-        </tbody>
-      {{else}}
-        <tbody><tr><td>Empty</td></tr></tbody>
-      {{/if}}
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
+      </tbody>
     </table>
   </div>
 

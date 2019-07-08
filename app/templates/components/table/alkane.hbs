@@ -2,14 +2,13 @@
   <strong>Alkanes:</strong>
 
   <div class="row">
-
     <div class="col-12">
-      <div class="table-responsive">
 
+      <div class="table-responsive">
         <table class="table table-hover table-bordered">
           <thead class="clickable" data-toggle="collapse"
                  data-target=".alkanes-row-collapse"
-                 aria-controls="alkanes-tbody alkanes-placeholder"
+                 aria-controls="alkanes-tbody"
                  aria-expanded="false">
             <tr>
               <th scope="col">#</th>
@@ -55,9 +54,9 @@
               <th scope="col">Weathering</th>
             </tr>
           </thead>
-          <tbody id="alkanes-tbody" class="collapse alkanes-row-collapse">
+          <tbody id="alkanes-tbody">
             {{#each oil.alkanes as |alkanes index|}}
-              <tr>
+              <tr class="collapse alkanes-row-collapse">
                 <th>{{index}}</th>
                 <td>{{value-unit alkanes.c8 2}}</td>
                 <td>{{value-unit alkanes.c9 2}}</td>
@@ -101,16 +100,15 @@
                 <td>{{alkanes.weathering}}</td>
               </tr>
             {{/each}}
-          </tbody>
-          {{#if oil.alkanes}}
-            <tbody id="alkanes-placeholder" class="collapse show alkanes-row-collapse">
-              <tr>
+
+            {{#if oil.alkanes}}
+              <tr class="collapse show alkanes-row-collapse">
                 <th>&#x2026;</th>
               </tr>
-            </tbody>
-          {{else}}
-            <tbody><tr><td>Empty</td></tr></tbody>
-          {{/if}}
+            {{else}}
+              <tr><td>Empty</td></tr>
+            {{/if}}
+          </tbody>
         </table>
       </div>
     </div>
