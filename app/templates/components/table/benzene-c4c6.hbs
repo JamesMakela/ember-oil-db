@@ -1,7 +1,7 @@
 <div class="detail-section">
-  <div class="table-responsive">
-    <strong>C4-C6 Alkyl Benzenes:</strong>
 
+  <strong>C4-C6 Alkyl Benzenes:</strong>
+  <div class="table-responsive">
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
              data-target=".c4c6-row-collapse"
@@ -42,15 +42,17 @@
             <td>{{value-unit benzene._1_2_dimethyl_4_ethylbenzene 2}}</td>
             <td>{{benzene.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
       </tbody>
-      <tbody id="c4c6-placeholder" class="collapse show c4c6-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
-      </tbody>
+      {{#if oil.benzene}}
+        <tbody id="c4c6-placeholder" class="collapse show c4c6-row-collapse">
+          <tr>
+            <th scope="row">&#x2026;</th>
+          </tr>
+        </tbody>
+      {{else}}
+        <tbody><tr><td>Empty</td></tr></tbody>
+      {{/if}}
     </table>
   </div>
 

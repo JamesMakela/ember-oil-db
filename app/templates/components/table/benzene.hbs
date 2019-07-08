@@ -20,15 +20,17 @@
             <td>{{value-unit benzene.benzene 3}}</td>
             <td>{{benzene.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
       </tbody>
-      <tbody id="benz-placeholder" class="collapse show benz-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
-      </tbody>
+      {{#if oil.benzene}}
+        <tbody id="benz-placeholder" class="collapse show benz-row-collapse">
+          <tr>
+            <th scope="row">&#x2026;</th>
+          </tr>
+        </tbody>
+      {{else}}
+        <tbody><tr><td>Empty</td></tr></tbody>
+      {{/if}}
     </table>
   </div>
 

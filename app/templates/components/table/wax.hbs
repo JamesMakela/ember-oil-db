@@ -16,19 +16,21 @@
       <tbody id="wax-tbody" class="collapse wax-row-collapse">
         {{#each oil.wax as |wax index|}}
           <tr>
-            <th scope="row">{{index}}</th>
+            <th>{{index}}</th>
             <td>{{value-unit wax.fraction 3}}</td>
             <td>{{wax.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
       </tbody>
-      <tbody id="wax-placeholder" class="collapse show wax-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
-      </tbody>
+      {{#if oil.wax}}
+        <tbody id="wax-placeholder" class="collapse show wax-row-collapse">
+          <tr>
+            <th>&#x2026;</th>
+          </tr>
+        </tbody>
+      {{else}}
+        <tbody><tr><td>Empty</td></tr></tbody>
+      {{/if}}
     </table>
   </div>
 

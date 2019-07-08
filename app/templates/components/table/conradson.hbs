@@ -27,15 +27,17 @@
             {{/if}}
             <td>{{conradson.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
       </tbody>
-      <tbody id="conradson-placeholder" class="collapse show conradson-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
-      </tbody>
+      {{#if oil.conradson}}
+        <tbody id="conradson-placeholder" class="collapse show conradson-row-collapse">
+          <tr>
+            <th scope="row">&#x2026;</th>
+          </tr>
+        </tbody>
+      {{else}}
+        <tbody><tr><td>Empty</td></tr></tbody>
+      {{/if}}
     </table>
   </div>
 

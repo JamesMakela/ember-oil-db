@@ -22,15 +22,17 @@
             <td>{{value-unit sara.fraction 3}}</td>
             <td>{{sara.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
       </tbody>
-      <tbody id="sara-placeholder" class="collapse show sara-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
-      </tbody>
+      {{#if oil.saraTotalFractions}}
+        <tbody id="sara-placeholder" class="collapse show sara-row-collapse">
+          <tr>
+            <th scope="row">&#x2026;</th>
+          </tr>
+        </tbody>
+      {{else}}
+        <tbody><tr><td>Empty</td></tr></tbody>
+      {{/if}}
     </table>
   </div>
 
