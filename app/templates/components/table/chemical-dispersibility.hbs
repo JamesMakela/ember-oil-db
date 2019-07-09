@@ -1,0 +1,42 @@
+<div class="detail-section">
+  <div class="table-responsive">
+    <strong>Chemical Dispersibility:</strong>
+
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".chemdisp-row-collapse"
+             aria-controls="chemdisp-tbody"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Dispersant</th>
+          <th scope="col">Effectiveness</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="chemdisp-tbody">
+        {{! Ok, our database schema might be a bit too specific.  Corexit is
+            probably not the only dispersant we might want to track.
+        }}
+
+        {{#each oil.corexit as |corexit index|}}
+          <tr class="collapse chemdisp-row-collapse">
+            <th scope="row">{{index}}</th>
+            <td>Corexit</td>
+            <td>{{value-unit corexit.effectiveness 3}}</td>
+            <td>{{corexit.weathering}}</td>
+          </tr>
+        {{/each}}
+
+        {{#if oil.sulfur}}
+          <tr class="collapse show chemdisp-row-collapse">
+            <th scope="row">&#x2026;</th>
+          </tr>
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
+      </tbody>
+    </table>
+  </div>
+
+</div>
