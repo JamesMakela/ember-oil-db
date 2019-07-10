@@ -55,7 +55,9 @@
           </div>
 
           <div class="col-lg-5">
-            <Table::Ift @oil={{this.model}} class="row"/>
+            <strong>Density Graph:</strong>
+
+            <Graph::Density @oil={{this.model}} class="row"/>
           </div>
 
           <div class="col-lg-5">
@@ -79,15 +81,19 @@
           </div>
 
           <div class="col-lg-5">
+            <Table::Ift @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="col-lg-5">
+            <Table::Adhesion @oil={{this.model}} class="row"/>
+          </div>
+
+          <div class="col-lg-5">
             <TabPourPoint @oil={{this.model}} class="row"/>
           </div>
 
           <div class="col-lg-5">
             <TabFlashPoint @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <Table::Adhesion @oil={{this.model}} class="row"/>
           </div>
 
           <div class="col-lg-5">

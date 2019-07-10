@@ -49,7 +49,12 @@ export default LineChart.extend({
     var data = this.get('data');
     var width = this.get('chartWidth');
 
-    var xValues = data.length > 0 ? data[0].values.map((v) => (v[0])) : [0, 100];
+    var xValues = [0, 100];  // default
+    if (data.length > 0) {
+        xValues = data.map((d) => (d.values))
+                  .reduce((v, i) => (v.concat(i)))
+                  .map((v) => (v[0]));
+    }
 
     var minMax = extent(xValues);
 
@@ -134,7 +139,7 @@ export default LineChart.extend({
       .append("text")
       .attr("transform", "rotate(-90)")
       .attr("x", -height / 2.0)
-      .attr("y", -40)
+      .attr("y", -50)
       .attr("dy", ".5em")
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
@@ -202,7 +207,7 @@ export default LineChart.extend({
       .attr("class", "legend")
       .attr("height", 100)
       .attr("width", 100)
-      .attr('transform', `translate(${width-70},0)`);
+      .attr('transform', `translate(${width-100},0)`);
 
     legend.selectAll('rect')
       .data(data)

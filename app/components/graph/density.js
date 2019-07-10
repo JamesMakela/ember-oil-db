@@ -13,23 +13,23 @@ export default LineChart.extend({
   data: null,
 
   initData() {
-    let dvis = this.oil.dvis;
+    let density = this.oil.densities;
     let data = [];
 
     let distinct_w;
     try {
-      distinct_w = Array.from(new Set(dvis.map(c => c.weathering)));
+      distinct_w = Array.from(new Set(density.map(d => d.weathering)));
     }
     catch(err) {
       distinct_w = [];
     }
 
     distinct_w.forEach(function(w) {
-      let weathered_dvis = dvis.filter((d) => (d.weathering === w));
+      let weathered_density = density.filter(d => (d.weathering === w));
 
       data.push({
         name: w,
-        values: weathered_dvis.map((d) => ([d.ref_temp.value, d.viscosity.value * 1000])),
+        values: weathered_density.map(d => ([d.ref_temp.value, d.density.value])),
         color: 'grey'
       });
     });
@@ -144,7 +144,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Viscosity (cP)");
+      .text("Density");
   },
 
   drawData: function() {

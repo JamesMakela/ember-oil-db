@@ -5,7 +5,7 @@
     <table class="table table-hover table-bordered">
       <thead class="clickable" data-toggle="collapse"
              data-target=".cut-row-collapse"
-             aria-controls="cut-tbody cut-placeholder"
+             aria-controls="cut-tbody"
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
@@ -14,22 +14,23 @@
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="cut-tbody" class="collapse cut-row-collapse">
+      <tbody id="cut-tbody">
         {{#each oil.cuts as |cut index|}}
-          <tr>
+          <tr class="collapse cut-row-collapse">
             <th scope="row">{{index}}</th>
             <td>{{value-unit cut.fraction 3}}</td>
             <td>{{value-unit cut.vapor_temp 2}}</td>
             <td>{{cut.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
-      </tbody>
-      <tbody id="cut-placeholder" class="collapse show cut-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
+
+        {{#if oil.cuts}}
+          <tr class="collapse show cut-row-collapse">
+            <th scope="row">&#x2026;</th>
+          </tr>
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
       </tbody>
     </table>
   </div>
