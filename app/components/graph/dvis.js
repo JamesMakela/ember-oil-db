@@ -1,7 +1,7 @@
 import { computed } from '@ember/object';
 
 import { extent } from 'd3-array';
-import { scaleLinear } from 'd3-scale';
+import { scaleLinear, scaleLog } from 'd3-scale';
 import { axisLeft, axisBottom } from 'd3-axis';
 import { format } from 'd3-format';
 import { line } from 'd3-shape';
@@ -67,7 +67,7 @@ export default LineChart.extend({
     var data = this.get('data');
     var height = this.get('chartHeight');
 
-    var yValues = [0, 1.0];
+    var yValues = [1, 100];
     if (data.length > 0) {
         yValues = data.map((d) => (d.values))
                   .reduce((v, i) => (v.concat(i)))
@@ -75,7 +75,7 @@ export default LineChart.extend({
     }
     var minMax = extent(yValues);
 
-    return scaleLinear()
+    return scaleLog()
       .domain(minMax)
       .range([height, 0]);
   }),
@@ -124,7 +124,7 @@ export default LineChart.extend({
 
     var tickValues = [];
     for (var i = 0; i < ticks; i++) {
-      tickValues.push(minMax[0] + steps * i);
+      tickValues.push(Math.floor(minMax[0] + steps * i));
     }
 
     var yAxis = axisLeft(scale)
