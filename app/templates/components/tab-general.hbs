@@ -1,6 +1,8 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-4 col-lg-2">
+      {{! First column }}
+
       <strong>ID:</strong> {{oil.id}}
       <br>
 
@@ -25,7 +27,36 @@
       {{/if}}
     </div>
 
-    <div class="col-sm-6 col-lg-4">
+    <div class="col-sm-8 col-md-8 col-lg-5 col-xl-4">
+      {{! Second column }}
+
+      <strong>API:</strong>
+
+      {{#each oil.apis as |api|}}
+        <span class="badge badge-dark">
+          {{round-relative api.gravity 2}}
+        </span>
+      {{else}}
+        <span>
+          No Values
+        </span>
+      {{/each}}
+      <br>
+
+      <strong>Categories:</strong>
+
+      {{#each oil.categories as |category|}}
+        <span class="badge badge-dark">
+          {{category}}
+        </span>
+      {{else}}
+        None
+      {{/each}}
+    </div>
+
+    <div class="col">
+      {{! Third column }}
+
       <strong>Location:</strong>
       {{#if oil.location}}
         {{oil.location}}
@@ -60,47 +91,6 @@
       <br>
     </div>  
 
-    <div class="col-sm-6 col-lg-4">
-      <strong>API:</strong>
-
-      {{#each oil.apis as |api|}}
-        <span class="badge badge-dark">
-          {{round-relative api.gravity 2}}
-        </span>
-      {{else}}
-        <span>
-          No Values
-        </span>
-      {{/each}}
-      <br>
-
-      <strong>Categories:</strong>
-
-      {{#each oil.categories as |category|}}
-        <span class="badge badge-dark">
-          {{category}}
-        </span>
-      {{else}}
-        None
-      {{/each}}
-    </div>
-  </div>
-
-  <div class="row">
-
-    <div class="col-sm">
-    </div>
-
-  </div>
-
-  <div class="row">
-    <div class="col-sm">
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-sm">
-    </div>
   </div>
 
 </div>
