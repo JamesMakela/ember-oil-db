@@ -14,22 +14,23 @@
           <th scope="col">Weathering</th>
         </tr>
       </thead>
-      <tbody id="dvis-tbody" class="collapse dvis-row-collapse">
+      <tbody id="dvis-tbody">
         {{#each oil.dvis as |dvis index|}}
-          <tr>
+          <tr class="collapse dvis-row-collapse">
             <th scope="row">{{index}}</th>
             <td>{{value-unit dvis.viscosity 3}}</td>
             <td>{{value-unit dvis.ref_temp 2}}</td>
             <td>{{dvis.weathering}}</td>
           </tr>
-        {{else}}
-          No Values
         {{/each}}
-      </tbody>
-      <tbody id="dvis-placeholder" class="collapse show dvis-row-collapse">
-        <tr>
-          <th scope="row">&#x2026;</th>
-        </tr>
+
+        {{#if oil.dvis}}
+          <tr class="collapse show dvis-row-collapse">
+            <th scope="row">&#x2026;</th>
+          </tr>
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
       </tbody>
     </table>
   </div>

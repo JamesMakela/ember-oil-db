@@ -13,24 +13,23 @@ export default LineChart.extend({
   data: null,
 
   initData() {
-    let cuts = this.oil.cuts;
-    //cuts.map((c) => ([c.fraction.value, c.vapor_temp.value]));
+    let kvis = this.oil.kvis;
     let data = [];
 
     let distinct_w;
     try {
-      distinct_w = Array.from(new Set(cuts.map(c => c.weathering)));
+      distinct_w = Array.from(new Set(kvis.map(c => c.weathering)));
     }
     catch(err) {
       distinct_w = [];
     }
 
     distinct_w.forEach(function(w) {
-      let weathered_cuts = cuts.filter((c) => (c.weathering === w));
+      let weathered_kvis = kvis.filter((k) => (k.weathering === w));
 
       data.push({
         name: w,
-        values: weathered_cuts.map((c) => ([c.vapor_temp.value, c.fraction.value])),
+        values: weathered_kvis.map((k) => ([k.ref_temp.value, k.viscosity.value * 1e6])),
         color: 'grey'
       });
     });
@@ -63,7 +62,12 @@ export default LineChart.extend({
     var data = this.get('data');
     var height = this.get('chartHeight');
 
-    var yValues = data.length > 0 ? data[0].values.map((v) => (v[1])) : [0, 1.0];
+    var yValues = [0, 1.0];
+    if (data.length > 0) {
+        yValues = data.map((d) => (d.values))
+                  .reduce((v, i) => (v.concat(i)))
+                  .map((v) => (v[1]));
+    }
     var minMax = extent(yValues);
 
     return scaleLinear()
@@ -100,7 +104,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Vapor Temperature");
+      .text("Reference Temperature");
   },
 
   createYAxisElement: function() {
@@ -135,7 +139,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Fraction");
+      .text("Viscosity (cSt)");
   },
 
   drawData: function() {
@@ -190,6 +194,7 @@ export default LineChart.extend({
 
   drawLegend: function() {
     var data = this.get('data');
+    var width = this.get('chartWidth');
 
     var svg = this.get('chartSVG');
 
@@ -197,7 +202,7 @@ export default LineChart.extend({
       .attr("class", "legend")
       .attr("height", 100)
       .attr("width", 100)
-      .attr('transform', `translate(0, 0)`);
+      .attr('transform', `translate(${width-70},0)`);
 
     legend.selectAll('rect')
       .data(data)
