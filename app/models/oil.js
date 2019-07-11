@@ -30,7 +30,7 @@ export default Model.extend({
   adhesions: attr(),
   evaporationEqs: attr(),
   emulsions: attr(),
-  corexit: attr(),
+  chemicalDispersibility: attr(),
   sulfur: attr(),
   water: attr(),
   benzene: attr(),

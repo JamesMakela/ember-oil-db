@@ -19,16 +19,16 @@
             probably not the only dispersant we might want to track.
         }}
 
-        {{#each oil.corexit as |corexit index|}}
+        {{#each oil.chemicalDispersibility as |dispersibility index|}}
           <tr class="collapse chemdisp-row-collapse">
             <th scope="row">{{index}}</th>
-            <td>Corexit</td>
-            <td>{{value-unit corexit.effectiveness 3}}</td>
-            <td>{{corexit.weathering}}</td>
+            <td>{{dispersibility.dispersant}}</td>
+            <td>{{value-unit dispersibility.effectiveness 3}}</td>
+            <td>{{dispersibility.weathering}}</td>
           </tr>
         {{/each}}
 
-        {{#if oil.sulfur}}
+        {{#if oil.chemicalDispersibility}}
           <tr class="collapse show chemdisp-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
