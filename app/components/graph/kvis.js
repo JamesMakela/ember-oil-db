@@ -7,6 +7,7 @@ import { format } from 'd3-format';
 import { line } from 'd3-shape';
 
 import LineChart from './line-chart';
+import { convertUnit } from 'ember-oil-db/helpers/convert-unit';
 
 
 export default LineChart.extend({
@@ -29,7 +30,10 @@ export default LineChart.extend({
 
       data.push({
         name: w,
-        values: weathered_kvis.map((k) => ([k.ref_temp.value, k.viscosity.value * 1e6])),
+        values: weathered_kvis.map((k) => ([
+          k.ref_temp.value,
+          convertUnit([k.viscosity, 'cSt']).value
+        ])),
         color: 'grey'
       });
     });

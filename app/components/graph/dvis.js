@@ -7,6 +7,7 @@ import { format } from 'd3-format';
 import { line } from 'd3-shape';
 
 import LineChart from './line-chart';
+import { convertUnit } from 'ember-oil-db/helpers/convert-unit';
 
 
 export default LineChart.extend({
@@ -29,7 +30,10 @@ export default LineChart.extend({
 
       data.push({
         name: w,
-        values: weathered_dvis.map((d) => ([d.ref_temp.value, d.viscosity.value * 1000])),
+        values: weathered_dvis.map((d) => ([
+          d.ref_temp.value,
+          convertUnit([d.viscosity, 'cP']).value
+        ])),
         color: 'grey'
       });
     });

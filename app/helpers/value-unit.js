@@ -2,13 +2,15 @@ import { helper } from '@ember/component/helper';
 import { roundRelative } from './round-relative';
 
 
-export function valueUnit([valueUnit, precision, ...rest]) {
-  if (valueUnit == null) {
+export function valueUnit([valueUnitObj,
+                           tol,
+                           ...rest]) {  // eslint-disable-line no-unused-vars
+  if (valueUnitObj == null) {
       return '';
   }
 
-  let v = roundRelative([valueUnit.value, precision]);
-  let u = valueUnit.unit;
+  let v = roundRelative([valueUnitObj.value, tol]);
+  let u = valueUnitObj.unit;
   let sep = ' ';
 
   // SI Kelvin units don't have a degree, so are not included here.

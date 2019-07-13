@@ -23,6 +23,7 @@
     "bootstrap": "^4.3.1",
     "broccoli-asset-rev": "^3.0.0",
     "ember-ajax": "^5.0.0",
+    "ember-auto-import": "^1.5.2",
     "ember-cli": "~3.10.0",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.7.3",
@@ -57,9 +58,11 @@
     "eslint-plugin-ember": "^6.2.0",
     "eslint-plugin-node": "^8.0.1",
     "loader.js": "^4.7.0",
+    "nucos": "^1.2.0",
+    "nucos-tmp": "^1.2.8",
     "popper.js": "^1.15.0",
     "qunit-dom": "^0.8.4",
-    "sass": "^1.21.0"
+    "sass": "^1.22.4"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"

@@ -7,6 +7,7 @@ import { format } from 'd3-format';
 import { line } from 'd3-shape';
 
 import LineChart from './line-chart';
+import { convertUnit } from 'ember-oil-db/helpers/convert-unit';
 
 
 export default LineChart.extend({
@@ -29,7 +30,10 @@ export default LineChart.extend({
 
       data.push({
         name: w,
-        values: weathered_density.map(d => ([d.ref_temp.value, d.density.value])),
+        values: weathered_density.map(d => ([
+          d.ref_temp.value,
+          convertUnit([d.density, 'kg/m^3', 'Density']).value
+        ])),
         color: 'grey'
       });
     });
@@ -144,7 +148,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Density");
+      .text("Density (kg/m\u00b3)");
   },
 
   drawData: function() {
