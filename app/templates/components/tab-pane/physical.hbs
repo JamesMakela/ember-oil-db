@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5">
+      <Table::Density @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <strong>Density Graph:</strong>
+
+      <Graph::Density @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <Table::KinematicViscosity @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <strong>Kinematic Viscosity Graph:</strong>
+
+      <Graph::Kvis @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <Table::DynamicViscosity @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <strong>Dynamic Viscosity Graph:</strong>
+
+      <Graph::Dvis @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <Table::Ift @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <Table::Adhesion @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <TabPourPoint @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      <TabFlashPoint @oil={{oil}} class="row"/>
+    </div>
+
+    <div class="col-lg-5">
+      {{! Placeholder div so that the last container lines up
+          with the first column.  Only necessary for an odd number
+          of containers }}
+    </div>
+
+  </div>
+</div>

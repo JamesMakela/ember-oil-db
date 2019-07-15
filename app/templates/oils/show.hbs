@@ -48,167 +48,26 @@
 
   <div class="tab-content" id="nav-tabContent">
     <div class="tab-pane fade active show" id="nav-physical" aria-labelledby="nav-physical-tab" role="tabpanel">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5">
-            <Table::Density @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <strong>Density Graph:</strong>
-
-            <Graph::Density @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <Table::KinematicViscosity @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <strong>Kinematic Viscosity Graph:</strong>
-
-            <Graph::Kvis @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <Table::DynamicViscosity @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <strong>Dynamic Viscosity Graph:</strong>
-
-            <Graph::Dvis @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <Table::Ift @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <Table::Adhesion @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <TabPourPoint @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <TabFlashPoint @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            {{! Placeholder div so that the last container lines up
-                with the first column.  Only necessary for an odd number
-                of containers }}
-          </div>
-
-        </div>
-      </div>
+      <TabPane::Physical @oil={{this.model}}/>
     </div>
 
     <div class="tab-pane fade active" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
       {{! class 'active' is necessary for the graph to render properly,
           even if the tab is not initially shown }}
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-5">
-            <Table::Distillation @oil={{this.model}} class="row"/>
-          </div>
-
-          <div class="col-lg-5">
-            <strong>Distillation Graph:</strong>
-
-            <Graph::Distillation @oil={{this.model}} class="row"/>
-          </div>
-
-        </div>
-      </div>
+      <TabPane::Distillation @oil={{this.model}}/>
     </div>
 
     <div class="tab-pane fade" id="nav-composition" aria-labelledby="nav-composition-tab" role="tabpanel">
-      <div class="container">
-        <div class="row">
-          <Table::Water @oil={{this.model}} class="col-3"/>
-
-          <Table::Wax @oil={{this.model}} class="col-3"/>
-
-          <Table::Sulfur @oil={{this.model}} class="col-3"/>
-        </div>
-
-        <div class="row">
-          <Table::Sara @oil={{this.model}} class="col-4"/>
-
-          <Table::Conradson @oil={{this.model}} class="col-4"/>
-        </div>
-
-        <div class="row">
-          <Table::Benzene @oil={{this.model}} class="col-3"/>
-
-          <Table::BenzeneBtex @oil={{this.model}} class="col-6"/>
-        </div>
-
-        <div class="row">
-          <Table::BenzeneC4c6 @oil={{this.model}} class="col-12"/>
-        </div>
-
-        <div class="row">
-          <Table::AlkylatedPah @oil={{this.model}} class="col-12"/>
-        </div>
-
-        <div class="row">
-          <Table::Alkane @oil={{this.model}} class="col-12"/>
-        </div>
-
-        <div class="row">
-          <Table::Chromatography @oil={{this.model}} class="col-12"/>
-        </div>
-
-        <div class="row">
-          <Table::Headspace @oil={{this.model}} class="col-10"/>
-        </div>
-
-        <div class="row">
-          <Table::Biomarkers @oil={{this.model}} class="col-12"/>
-        </div>
-
-      </div>
+      <TabPane::Composition @oil={{this.model}}/>
     </div>
+
     <div class="tab-pane fade" id="nav-environmental" aria-labelledby="nav-environmental-tab" role="tabpanel">
-      <div class="container">
-
-        <div class="row">
-          <Table::ChemicalDispersibility @oil={{this.model}} class="col-4"/>
-
-          <Table::Toxicity @oil={{this.model}} class="col-5"/>
-
-          <Table::EvaporationEqs @oil={{this.model}} class="col-5"/>
-        </div>
-
-      </div>
-
+      <TabPane::Environmental @oil={{this.model}}/>
     </div>
+
     <div class="tab-pane fade" id="nav-ccme" aria-labelledby="nav-ccme-tab" role="tabpanel">
-      <div class="container">
-        <div class="row">
-          <Table::Ccme @oil={{this.model}} class="col-5"/>
-        </div>
-
-        <div class="row">
-          <Table::CcmeF1 @oil={{this.model}} class="col-12"/>
-        </div>
-
-        <div class="row">
-          <Table::CcmeF2 @oil={{this.model}} class="col-12"/>
-        </div>
-
-        <div class="row">
-          <Table::CcmeTph @oil={{this.model}} class="col-12"/>
-        </div>
-      </div>
-
+      <TabPane::Ccme @oil={{this.model}}/>
     </div>
   </div>
-
-
 
 </div>
