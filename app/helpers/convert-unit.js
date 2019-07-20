@@ -1,6 +1,6 @@
 import { helper } from '@ember/component/helper';
 
-import Nucos from 'nucos-tmp/nucos';
+import Nucos from 'nucos/nucos';
 
 
 export function convertUnit([valueUnitObj,

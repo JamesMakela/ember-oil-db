@@ -14,17 +14,11 @@
       {{/if}}
       <br>
 
-      {{#if oil.status}}
-        <ul>
-          {{#each oil.status as |stat|}}
-            <li><i class="status-bad">{{stat}}</i></li>
-          {{/each}}
-        </ul>
-      {{else}}
+      {{#unless oil.status}}
         <strong>
           Status: <i class="status-good">OK</i>
         </strong>
-      {{/if}}
+      {{/unless}}
     </div>
 
     <div class="col-sm-8 col-md-8 col-lg-5 col-xl-4">
@@ -82,6 +76,15 @@
       {{/if}}
       <br>
 
+      <strong>Sample Received Date:</strong>
+      {{#if oil.sampleDate}}
+        {{! Europe/London is how we lookup GMT in moment.js }}
+        {{moment-format (unix oil.sampleDate) "YYYY-MM-DD" timeZone="Europe/London"}}
+      {{else}}
+        None
+      {{/if}}
+      <br>
+
       <strong>Comments:</strong>
       {{#if oil.comments}}
         {{oil.comments}}
@@ -91,6 +94,18 @@
       <br>
     </div>  
 
+  </div>
+
+  <div class="row">
+    <div class="col">
+      {{#if oil.status}}
+        <ul>
+          {{#each oil.status as |stat|}}
+            <li><i class="status-bad">{{stat}}</i></li>
+          {{/each}}
+        </ul>
+      {{/if}}
+    </div>
   </div>
 
 </div>

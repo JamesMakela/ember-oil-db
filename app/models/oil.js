@@ -16,6 +16,7 @@ export default Model.extend({
   // These are used in the oil details page
   reference: attr(),
   referenceDate: attr(),
+  sampleDate: attr(),
   comments: attr(),
   synonyms: attr(),
   
