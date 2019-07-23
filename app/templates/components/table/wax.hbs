@@ -15,15 +15,17 @@
       </thead>
       <tbody id="wax-tbody">
         {{#each oil.waxContent as |wax index|}}
-          <tr class="collapse wax-row-collapse">
-            <th>{{index}}</th>
-            <td>{{value-unit wax.fraction 3}}</td>
-            <td>{{wax.weathering}}</td>
-          </tr>
+          {{#if (eq wax.weathering weathered)}}
+            <tr class="collapse show wax-row-collapse">
+              <th>{{index}}</th>
+              <td>{{value-unit wax.fraction 3}}</td>
+              <td>{{wax.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.waxContent}}
-          <tr class="collapse show wax-row-collapse">
+          <tr class="collapse wax-row-collapse">
             <th>&#x2026;</th>
           </tr>
         {{else}}

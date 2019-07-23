@@ -15,15 +15,17 @@
       </thead>
       <tbody id="benz-tbody">
         {{#each oil.benzene as |benzene index|}}
-          <tr class="collapse benz-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit benzene.benzene 3}}</td>
-            <td>{{benzene.weathering}}</td>
-          </tr>
+          {{#if (eq benzene.weathering weathered)}}
+            <tr class="collapse show benz-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit benzene.benzene 3}}</td>
+              <td>{{benzene.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.benzene}}
-          <tr class="collapse show benz-row-collapse">
+          <tr class="collapse benz-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

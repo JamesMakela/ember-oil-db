@@ -18,18 +18,20 @@
       </thead>
       <tbody id="ccme-tbody">
         {{#each oil.ccme as |ccme index|}}
-          <tr class="collapse ccme-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit ccme.f1 3}}</td>
-            <td>{{value-unit ccme.f2 3}}</td>
-            <td>{{value-unit ccme.f3 3}}</td>
-            <td>{{value-unit ccme.f4 3}}</td>
-            <td>{{ccme.weathering}}</td>
-          </tr>
+          {{#if (eq ccme.weathering weathered)}}
+            <tr class="collapse show ccme-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit ccme.f1 3}}</td>
+              <td>{{value-unit ccme.f2 3}}</td>
+              <td>{{value-unit ccme.f3 3}}</td>
+              <td>{{value-unit ccme.f4 3}}</td>
+              <td>{{ccme.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.ccme}}
-          <tr class="collapse show ccme-row-collapse">
+          <tr class="collapse ccme-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

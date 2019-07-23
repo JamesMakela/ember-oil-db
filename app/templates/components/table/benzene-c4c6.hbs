@@ -26,26 +26,28 @@
       </thead>
       <tbody id="c4c6-tbody">
         {{#each oil.benzene as |benzene index|}}
-          <tr class="collapse c4c6-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit benzene.amylbenzene 2}}</td>
-            <td>{{value-unit benzene.propylebenzene 2}}</td>
-            <td>{{value-unit benzene.isopropylbenzene 2}}</td>
-            <td>{{value-unit benzene.isobutylbenzene 2}}</td>
-            <td>{{value-unit benzene.n_hexylbenzene 2}}</td>
-            <td>{{value-unit benzene._1_2_3_trimethylbenzene 2}}</td>
-            <td>{{value-unit benzene._1_2_4_trimethylbenzene 2}}</td>
-            <td>{{value-unit benzene._1_3_5_trimethylbenzene 2}}</td>
-            <td>{{value-unit benzene._2_ethyltoluene 2}}</td>
-            <td>{{value-unit benzene._3_4_ethyltoluene 2}}</td>
-            <td>{{value-unit benzene._1_methyl_2_isopropylbenzene 2}}</td>
-            <td>{{value-unit benzene._1_2_dimethyl_4_ethylbenzene 2}}</td>
-            <td>{{benzene.weathering}}</td>
-          </tr>
+          {{#if (eq benzene.weathering weathered)}}
+            <tr class="collapse show c4c6-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit benzene.amylbenzene 2}}</td>
+              <td>{{value-unit benzene.propylebenzene 2}}</td>
+              <td>{{value-unit benzene.isopropylbenzene 2}}</td>
+              <td>{{value-unit benzene.isobutylbenzene 2}}</td>
+              <td>{{value-unit benzene.n_hexylbenzene 2}}</td>
+              <td>{{value-unit benzene._1_2_3_trimethylbenzene 2}}</td>
+              <td>{{value-unit benzene._1_2_4_trimethylbenzene 2}}</td>
+              <td>{{value-unit benzene._1_3_5_trimethylbenzene 2}}</td>
+              <td>{{value-unit benzene._2_ethyltoluene 2}}</td>
+              <td>{{value-unit benzene._3_4_ethyltoluene 2}}</td>
+              <td>{{value-unit benzene._1_methyl_2_isopropylbenzene 2}}</td>
+              <td>{{value-unit benzene._1_2_dimethyl_4_ethylbenzene 2}}</td>
+              <td>{{benzene.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.benzene}}
-          <tr class="collapse show c4c6-row-collapse">
+          <tr class="collapse c4c6-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

@@ -18,18 +18,20 @@
       </thead>
       <tbody id="btex-tbody">
         {{#each oil.benzene as |benzene index|}}
-          <tr class="collapse btex-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit benzene.toluene 2}}</td>
-            <td>{{value-unit benzene.ethylbenzene 2}}</td>
-            <td>{{value-unit benzene.m_p_xylene 2}}</td>
-            <td>{{value-unit benzene.o_xylene 2}}</td>
-            <td>{{benzene.weathering}}</td>
-          </tr>
+          {{#if (eq benzene.weathering weathered)}}
+            <tr class="collapse show btex-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit benzene.toluene 2}}</td>
+              <td>{{value-unit benzene.ethylbenzene 2}}</td>
+              <td>{{value-unit benzene.m_p_xylene 2}}</td>
+              <td>{{value-unit benzene.o_xylene 2}}</td>
+              <td>{{benzene.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.benzene}}
-          <tr class="collapse show btex-row-collapse">
+          <tr class="collapse btex-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

@@ -18,7 +18,7 @@
       </thead>
       <tbody id="toxicity-tbody">
         {{#each oil.toxicities as |toxicity index|}}
-          <tr class="collapse toxicity-row-collapse">
+          <tr class="collapse show toxicity-row-collapse">
             <th scope="row">{{index}}</th>
             <td>{{toxicity.species}}</td>
             <td>{{toxicity.tox_type}}</td>
@@ -29,7 +29,7 @@
         {{/each}}
 
         {{#if oil.toxicities}}
-          <tr class="collapse show toxicity-row-collapse">
+          <tr class="collapse toxicity-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

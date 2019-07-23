@@ -17,16 +17,18 @@
       </thead>
       <tbody id="density-tbody">
         {{#each oil.densities as |density index|}}
-          <tr class="collapse density-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit density.density 2}}</td>
-            <td>{{value-unit density.ref_temp 2}}</td>
-            <td>{{density.weathering}}</td>
-          </tr>
+          {{#if (eq density.weathering weathered)}}
+            <tr class="collapse show density-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit density.density 2}}</td>
+              <td>{{value-unit density.ref_temp 2}}</td>
+              <td>{{density.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.densities}}
-          <tr class="collapse show density-row-collapse">
+          <tr class="collapse density-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

@@ -16,16 +16,18 @@
       </thead>
       <tbody id="sara-tbody">
         {{#each oil.saraTotalFractions as |sara index|}}
-          <tr class="collapse sara-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{sara.sara_type}}</td>
-            <td>{{value-unit sara.fraction 3}}</td>
-            <td>{{sara.weathering}}</td>
-          </tr>
+          {{#if (eq sara.weathering weathered)}}
+            <tr class="collapse show sara-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{sara.sara_type}}</td>
+              <td>{{value-unit sara.fraction 3}}</td>
+              <td>{{sara.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.saraTotalFractions}}
-          <tr class="collapse show sara-row-collapse">
+          <tr class="collapse sara-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

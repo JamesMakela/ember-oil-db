@@ -17,19 +17,21 @@
         </tr>
       </thead>
       <tbody id="evaporationeqs-tbody">
-        {{#each oil.evaporationEqs as |eq index|}}
-          <tr class="collapse evaporationeqs-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{eq.a}}</td>
-            <td>{{eq.b}}</td>
-            <td>{{eq.c}}</td>
-            <td>{{eq.equation}}</td>
-            <td>{{eq.weathering}}</td>
-          </tr>
+        {{#each oil.evaporationEqs as |evap index|}}
+          {{#if (eq evap.weathering weathered)}}
+            <tr class="collapse show evaporationeqs-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{evap.a}}</td>
+              <td>{{evap.b}}</td>
+              <td>{{evap.c}}</td>
+              <td>{{evap.equation}}</td>
+              <td>{{evap.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.evaporationEqs}}
-          <tr class="collapse show evaporationeqs-row-collapse">
+          <tr class="collapse evaporationeqs-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

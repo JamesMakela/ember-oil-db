@@ -15,15 +15,17 @@
       </thead>
       <tbody id="adhesion-tbody">
         {{#each oil.adhesions as |adhesion index|}}
-          <tr class="collapse adhesion-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit adhesion.adhesion 3}}</td>
-            <td>{{adhesion.weathering}}</td>
-          </tr>
+          {{#if (eq adhesion.weathering weathered)}}
+            <tr class="collapse show adhesion-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit adhesion.adhesion 3}}</td>
+              <td>{{adhesion.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.adhesions}}
-          <tr class="collapse show adhesion-row-collapse">
+          <tr class="collapse adhesion-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

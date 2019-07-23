@@ -20,54 +20,45 @@
     <TabGeneral @oil={{this.model}} />
   </div>
 
-
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-physical-tab" href="#nav-physical" aria-controls="nav-physical"
-         data-toggle="tab" role="tab" aria-selected="true">
-        Physical Properties
-      </a>
-      <a class="nav-item nav-link" id="nav-distillation-tab" href="#nav-distillation" aria-controls="nav-distillation"
-         data-toggle="tab" role="tab" aria-selected="false">
-        Distillation Cuts
-      </a>
-      <a class="nav-item nav-link" id="nav-composition-tab" href="#nav-composition" aria-controls="nav-composition"
-         data-toggle="tab" role="tab" aria-selected="false">
-        Composition
-      </a>
-      <a class="nav-item nav-link" id="nav-environmental-tab" href="#nav-environmental" aria-controls="nav-environmental"
-         data-toggle="tab" role="tab" aria-selected="false">
-        Environmental Behavior
-      </a>
-      <a class="nav-item nav-link" id="nav-ccme-tab" href="#nav-ccme" aria-controls="nav-ccme"
-         data-toggle="tab" role="tab" aria-selected="false">
-        CCME
-      </a>
+      {{#each (weathered-samples this.model) as |sample|}}
+        {{#if sample}}
+          <a id="nav-{{slug sample}}-tab" href="#nav-{{slug sample}}"
+             aria-controls="nav-{{slug sample}}"
+             data-toggle="tab" role="tab"
+             class="nav-item nav-link" aria-selected="false">
+            w={{sample}}
+          </a>
+        {{else}}
+          <a id="nav-{{slug sample}}-tab" href="#nav-{{slug sample}}"
+             aria-controls="nav-{{slug sample}}"
+             data-toggle="tab" role="tab"
+             class="nav-item nav-link active" aria-selected="true">
+            w={{sample}} (fresh)
+          </a>
+        {{/if}}
+
+      {{/each}}
     </div>
   </nav>
 
   <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade active show" id="nav-physical" aria-labelledby="nav-physical-tab" role="tabpanel">
-      <TabPane::Physical @oil={{this.model}}/>
-    </div>
 
-    <div class="tab-pane fade active" id="nav-distillation" aria-labelledby="nav-distillation-tab" role="tabpanel">
-      {{! class 'active' is necessary for the graph to render properly,
-          even if the tab is not initially shown }}
-      <TabPane::Distillation @oil={{this.model}}/>
-    </div>
+    {{#each (weathered-samples this.model) as |sample|}}
+      {{#if sample}}
+        <div class="tab-pane fade" role="tabpanel"
+             id="nav-{{slug sample}}" aria-labelledby="nav-{{slug sample}}-tab">
+          {{sample}}
+        </div>
+      {{else}}
+        <div class="tab-pane fade active show" role="tabpanel"
+             id="nav-{{slug sample}}" aria-labelledby="nav-{{slug sample}}-tab">
+          <TabPane::WeatheredTopLevel @oil={{this.model}} @weathered={{sample}}/>
+        </div>
+      {{/if}}
+    {{/each}}
 
-    <div class="tab-pane fade" id="nav-composition" aria-labelledby="nav-composition-tab" role="tabpanel">
-      <TabPane::Composition @oil={{this.model}}/>
-    </div>
-
-    <div class="tab-pane fade" id="nav-environmental" aria-labelledby="nav-environmental-tab" role="tabpanel">
-      <TabPane::Environmental @oil={{this.model}}/>
-    </div>
-
-    <div class="tab-pane fade" id="nav-ccme" aria-labelledby="nav-ccme-tab" role="tabpanel">
-      <TabPane::Ccme @oil={{this.model}}/>
-    </div>
   </div>
 
 </div>

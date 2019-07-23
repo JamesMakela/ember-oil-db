@@ -17,17 +17,19 @@
       </thead>
       <tbody id="ift-tbody">
         {{#each oil.ifts as |ift index|}}
-          <tr class="collapse ift-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{ift.interface}}</td>
-            <td>{{value-unit ift.tension 3}}</td>
-            <td>{{value-unit ift.ref_temp 2}}</td>
-            <td>{{ift.weathering}}</td>
-          </tr>
+          {{#if (eq ift.weathering weathered)}}
+            <tr class="collapse show ift-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{ift.interface}}</td>
+              <td>{{value-unit ift.tension 3}}</td>
+              <td>{{value-unit ift.ref_temp 2}}</td>
+              <td>{{ift.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.ifts}}
-          <tr class="collapse show ift-row-collapse">
+          <tr class="collapse ift-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

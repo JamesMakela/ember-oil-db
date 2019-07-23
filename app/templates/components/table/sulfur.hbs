@@ -15,15 +15,17 @@
       </thead>
       <tbody id="sulfur-tbody">
         {{#each oil.sulfur as |sulfur index|}}
-          <tr class="collapse sulfur-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit sulfur.fraction 3}}</td>
-            <td>{{sulfur.weathering}}</td>
-          </tr>
+          {{#if (eq sulfur.weathering weathered)}}
+            <tr class="collapse show sulfur-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit sulfur.fraction 3}}</td>
+              <td>{{sulfur.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.sulfur}}
-          <tr class="collapse show sulfur-row-collapse">
+          <tr class="collapse sulfur-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

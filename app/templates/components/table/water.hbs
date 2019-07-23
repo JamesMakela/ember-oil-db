@@ -16,15 +16,17 @@
       </thead>
       <tbody id="water-tbody">
         {{#each oil.water as |water index|}}
-          <tr class="collapse water-row-collapse">
-            <th>{{index}}</th>
-            <td>{{value-unit water.fraction 3}}</td>
-            <td>{{water.weathering}}</td>
-          </tr>
+          {{#if (eq water.weathering weathered)}}
+            <tr class="collapse show water-row-collapse">
+              <th>{{index}}</th>
+              <td>{{value-unit water.fraction 3}}</td>
+              <td>{{water.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.water}}
-          <tr class="collapse show water-row-collapse">
+          <tr class="collapse water-row-collapse">
             <th>&#x2026;</th>
           </tr>
         {{else}}

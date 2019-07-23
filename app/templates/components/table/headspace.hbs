@@ -22,21 +22,23 @@
       </thead>
       <tbody id="headspace-tbody">
         {{#each oil.headspace as |headspace index|}}
-          <tr class="collapse headspace-row-collapse">
-            <th>{{index}}</th>
-            <td>{{value-unit headspace.n_c5 2}}</td>
-            <td>{{value-unit headspace.n_c6 2}}</td>
-            <td>{{value-unit headspace.n_c7 2}}</td>
-            <td>{{value-unit headspace.n_c8 2}}</td>
-            <td>{{value-unit headspace.c5_group 2}}</td>
-            <td>{{value-unit headspace.c6_group 2}}</td>
-            <td>{{value-unit headspace.c7_group 2}}</td>
-            <td>{{headspace.weathering}}</td>
-          </tr>
+          {{#if (eq headspace.weathering weathered)}}
+            <tr class="collapse show headspace-row-collapse">
+              <th>{{index}}</th>
+              <td>{{value-unit headspace.n_c5 2}}</td>
+              <td>{{value-unit headspace.n_c6 2}}</td>
+              <td>{{value-unit headspace.n_c7 2}}</td>
+              <td>{{value-unit headspace.n_c8 2}}</td>
+              <td>{{value-unit headspace.c5_group 2}}</td>
+              <td>{{value-unit headspace.c6_group 2}}</td>
+              <td>{{value-unit headspace.c7_group 2}}</td>
+              <td>{{headspace.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.headspace}}
-          <tr class="collapse show headspace-row-collapse">
+          <tr class="collapse headspace-row-collapse">
             <th>&#x2026;</th>
           </tr>
         {{else}}

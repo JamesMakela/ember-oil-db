@@ -1,16 +1,41 @@
 <div class="detail-section">
-  <div class="detail pour-point">
+  <div class="table-responsive">
     <strong>Pour Point:</strong>
 
-    {{#each oil.pourPoint as |pp|}}
-      <span class="badge badge-dark">
-        {{pp}}
-      </span>
-    {{else}}
-      <span>
-        No Values
-      </span>
-    {{/each}}
+    <table class="table table-hover table-bordered">
+      <thead class="clickable" data-toggle="collapse"
+             data-target=".pp-row-collapse"
+             aria-controls="pp-tbody"
+             aria-expanded="false">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Min Temp</th>
+          <th scope="col">Max Temp</th>
+          <th scope="col">Weathering</th>
+        </tr>
+      </thead>
+      <tbody id="pp-tbody">
+        {{#each oil.pourPoints as |pp index|}}
+          {{#if (eq pp.weathering weathered)}}
+            <tr class="collapse show pp-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit pp.min_temp 2}}</td>
+              <td>{{value-unit pp.max_temp 2}}</td>
+              <td>{{pp.weathering}}</td>
+            </tr>
+          {{/if}}
+        {{/each}}
+
+        {{#if oil.pourPoints}}
+          <tr class="collapse pp-row-collapse">
+            <th scope="row">&#x2026;</th>
+          </tr>
+        {{else}}
+          <tr><td>Empty</td></tr>
+        {{/if}}
+      </tbody>
+    </table>
+
   </div>
 
 </div>

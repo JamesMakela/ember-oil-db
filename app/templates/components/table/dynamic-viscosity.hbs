@@ -16,16 +16,18 @@
       </thead>
       <tbody id="dvis-tbody">
         {{#each oil.dvis as |dvis index|}}
-          <tr class="collapse dvis-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{value-unit dvis.viscosity 3}}</td>
-            <td>{{value-unit dvis.ref_temp 2}}</td>
-            <td>{{dvis.weathering}}</td>
-          </tr>
+          {{#if (eq dvis.weathering weathered)}}
+            <tr class="collapse show dvis-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{value-unit dvis.viscosity 3}}</td>
+              <td>{{value-unit dvis.ref_temp 2}}</td>
+              <td>{{dvis.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.dvis}}
-          <tr class="collapse show dvis-row-collapse">
+          <tr class="collapse dvis-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

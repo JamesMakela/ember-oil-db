@@ -15,21 +15,19 @@
         </tr>
       </thead>
       <tbody id="chemdisp-tbody">
-        {{! Ok, our database schema might be a bit too specific.  Corexit is
-            probably not the only dispersant we might want to track.
-        }}
-
         {{#each oil.chemicalDispersibility as |dispersibility index|}}
-          <tr class="collapse chemdisp-row-collapse">
-            <th scope="row">{{index}}</th>
-            <td>{{dispersibility.dispersant}}</td>
-            <td>{{value-unit dispersibility.effectiveness 3}}</td>
-            <td>{{dispersibility.weathering}}</td>
-          </tr>
+          {{#if (eq dispersibility.weathering weathered)}}
+            <tr class="collapse show chemdisp-row-collapse">
+              <th scope="row">{{index}}</th>
+              <td>{{dispersibility.dispersant}}</td>
+              <td>{{value-unit dispersibility.effectiveness 3}}</td>
+              <td>{{dispersibility.weathering}}</td>
+            </tr>
+          {{/if}}
         {{/each}}
 
         {{#if oil.chemicalDispersibility}}
-          <tr class="collapse show chemdisp-row-collapse">
+          <tr class="collapse chemdisp-row-collapse">
             <th scope="row">&#x2026;</th>
           </tr>
         {{else}}

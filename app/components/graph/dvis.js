@@ -20,6 +20,12 @@ export default LineChart.extend({
     let distinct_w;
     try {
       distinct_w = Array.from(new Set(dvis.map(c => c.weathering)));
+
+      // We can optionally choose a particular weathered set py passing in
+      // a weathered arg.  But it must match an existing one.
+      if (this.weathered in distinct_w) {
+          distinct_w = [this.weathered];
+      }
     }
     catch(err) {
       distinct_w = [];
