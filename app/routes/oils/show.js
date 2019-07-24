@@ -22,7 +22,7 @@ export default Route.extend({
         //
         // So for any tab panes that we defined as active, but don't actually
         // intend to be active initially, we undo the active state
-        $('#nav-distillation').removeClass('active');
+        $( "div.tab-pane.active" ).not('.show').removeClass('active');
       });
 
       return true; // Bubble the didTransition event

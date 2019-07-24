@@ -23,7 +23,7 @@ export default LineChart.extend({
 
       // We can optionally choose a particular weathered set py passing in
       // a weathered arg.  But it must match an existing one.
-      if (this.weathered in distinct_w) {
+      if (distinct_w.includes(this.weathered)) {
           distinct_w = [this.weathered];
       }
     }
@@ -37,7 +37,7 @@ export default LineChart.extend({
       data.push({
         name: w,
         values: weathered_dvis.map((d) => ([
-          d.ref_temp.value,
+          convertUnit([d.ref_temp, 'K']).value,
           convertUnit([d.viscosity, 'cP']).value
         ])),
         color: 'grey'
@@ -119,7 +119,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Reference Temperature");
+      .text("Reference Temperature (K)");
   },
 
   createYAxisElement: function() {

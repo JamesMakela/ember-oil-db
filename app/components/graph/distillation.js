@@ -7,6 +7,7 @@ import { format } from 'd3-format';
 import { line } from 'd3-shape';
 
 import LineChart from './line-chart';
+import { convertUnit } from 'ember-oil-db/helpers/convert-unit';
 
 
 export default LineChart.extend({
@@ -23,7 +24,7 @@ export default LineChart.extend({
 
       // We can optionally choose a particular weathered set py passing in
       // a weathered arg.  But it must match an existing one.
-      if (this.weathered in distinct_w) {
+      if (distinct_w.includes(this.weathered)) {
           distinct_w = [this.weathered];
       }
     }
@@ -36,7 +37,10 @@ export default LineChart.extend({
 
       data.push({
         name: w,
-        values: weathered_cuts.map((c) => ([c.vapor_temp.value, c.fraction.value])),
+        values: weathered_cuts.map((c) => ([
+          convertUnit([c.vapor_temp, 'K']).value,
+          c.fraction.value
+        ])),
         color: 'grey'
       });
     });
@@ -106,7 +110,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Vapor Temperature");
+      .text("Vapor Temperature (K)");
   },
 
   createYAxisElement: function() {

@@ -47,9 +47,9 @@
 
     {{#each (weathered-samples this.model) as |sample|}}
       {{#if sample}}
-        <div class="tab-pane fade" role="tabpanel"
+        <div class="tab-pane fade active" role="tabpanel"
              id="nav-{{slug sample}}" aria-labelledby="nav-{{slug sample}}-tab">
-          {{sample}}
+          <TabPane::WeatheredTopLevel @oil={{this.model}} @weathered={{sample}}/>
         </div>
       {{else}}
         <div class="tab-pane fade active show" role="tabpanel"
