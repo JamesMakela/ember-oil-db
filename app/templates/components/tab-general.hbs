@@ -41,7 +41,11 @@
 
       {{#each oil.categories as |category|}}
         <span class="badge badge-dark">
-          {{category}}
+          {{#if category.parent}}
+            {{category.parent.name}}->{{category.name}}
+          {{else}}
+            {{category.name}}
+          {{/if}}
         </span>
       {{else}}
         None

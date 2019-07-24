@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-const { Model, attr } = DS;
+const { Model, attr, hasMany } = DS;
 
 export default Model.extend({
   // These attributes are used in the table columns of the search
@@ -10,23 +10,23 @@ export default Model.extend({
   pourPoint: attr(),
   apis: attr(),
   categoriesStr: attr(),
-  categories: attr(),
+  categories: hasMany(),
   status: attr(),
-  
+
   // These are used in the oil details page
   reference: attr(),
   referenceDate: attr(),
   sampleDate: attr(),
   comments: attr(),
   synonyms: attr(),
-  
+
   densities: attr(),
   dvis: attr(),
   kvis: attr(),
   flashPoints: attr(),
   pourPoints: attr(),
   cuts: attr(),
-  
+
   ifts: attr(),
   adhesions: attr(),
   evaporationEqs: attr(),
@@ -37,12 +37,12 @@ export default Model.extend({
   benzene: attr(),
   headspace: attr(),
   chromatography: attr(),
-  
+
   ccme: attr(),
   ccmeF1: attr(),
   ccmeF2: attr(),
   ccmeTph: attr(),
-  
+
   alkylatedPahs: attr(),
   biomarkers: attr(),
   waxContent: attr(),
