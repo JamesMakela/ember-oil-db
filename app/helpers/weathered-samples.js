@@ -2,7 +2,7 @@ import { helper } from '@ember/component/helper';
 
 export function weatheredSamples([oil,
                                   ...rest]) {  // eslint-disable-line no-unused-vars
-  let samples = new Set(oil.densities.map(d => d.weathering));
+  let samples = new Set();
 
   oil.eachAttribute(a => {
     let attr = oil.get(a);
