@@ -9,9 +9,12 @@ export function roundRelative([num,
   else if (num > 1.0) {
     return Math.round(num * 10 ** tol) / 10 ** tol;
   }
-  else {
+  else if (num) {
     let scale = 10 ** (tol - 1 - Math.floor(Math.log10(Math.abs(num))));
     return Math.round(num * scale) / scale;
+  }
+  else {
+    return num;  // probably undefined
   }
 }
 

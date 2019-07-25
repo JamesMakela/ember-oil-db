@@ -1,11 +1,13 @@
 <div class="container">
 
   <div class="row">
+    <Table::Emulsion @oil={{oil}} @weathered={{weathered}} class="col-12"/>
+
+    <Table::EvaporationEqs @oil={{oil}} @weathered={{weathered}} class="col-5"/>
+
     <Table::ChemicalDispersibility @oil={{oil}} @weathered={{weathered}} class="col-5"/>
 
     <Table::Toxicity @oil={{oil}} @weathered={{weathered}} class="col-5"/>
-
-    <Table::EvaporationEqs @oil={{oil}} @weathered={{weathered}} class="col-5"/>
   </div>
 
 </div>
