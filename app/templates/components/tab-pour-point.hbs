@@ -9,8 +9,7 @@
              aria-expanded="false">
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Min Temp</th>
-          <th scope="col">Max Temp</th>
+          <th scope="col">Temperature</th>
           <th scope="col">Weathering</th>
         </tr>
       </thead>
@@ -19,8 +18,7 @@
           {{#if (eq pp.weathering weathered)}}
             <tr class="collapse show pp-row-collapse">
               <th scope="row">{{index}}</th>
-              <td>{{value-unit pp.min_temp 2}}</td>
-              <td>{{value-unit pp.max_temp 2}}</td>
+              <td>{{value-unit-range pp.min_temp pp.max_temp 2}}</td>
               <td>{{pp.weathering}}</td>
             </tr>
           {{/if}}
