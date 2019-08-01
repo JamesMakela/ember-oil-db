@@ -9,7 +9,7 @@ export function weatheredSamples([oil,
     if (attr &&
         attr.length > 0 &&
         typeof attr['map'] === 'function' &&
-        attr.every(i => (i['weathering'] !== undefined))) {
+        attr.every(i => (i !== null && i['weathering'] !== undefined))) {
       attr.map(i => (samples.add(i.weathering)));
     }
   });
