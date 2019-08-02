@@ -20,8 +20,8 @@
           {{#if (eq density.weathering weathered)}}
             <tr class="collapse show density-row-collapse">
               <th scope="row">{{index}}</th>
-              <td>{{value-unit density.density 2}}</td>
-              <td>{{value-unit density.ref_temp 2}}</td>
+              <td>{{value-unit (convert-unit density.density "g/cm^3") 2}}</td>
+              <td>{{value-unit (convert-unit density.ref_temp "C") 2}}</td>
               <td>{{density.weathering}}</td>
             </tr>
           {{/if}}

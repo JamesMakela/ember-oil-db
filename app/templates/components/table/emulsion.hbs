@@ -33,8 +33,8 @@
               <td>{{value-unit emulsion.storage_modulus 3}}</td>
               <td>{{value-unit emulsion.loss_modulus 3}}</td>
               <td>{{round-relative emulsion.tan_delta_v_e 3}}</td>
-              <td>{{value-unit (convert-unit emulsion.age 'days') 1}}</td>
-              <td>{{value-unit emulsion.ref_temp 3}}</td>
+              <td>{{value-unit (convert-unit emulsion.age "days") 1}}</td>
+              <td>{{value-unit (convert-unit emulsion.ref_temp "C") 3}}</td>
               <td>{{emulsion.weathering}}</td>
             </tr>
           {{/if}}

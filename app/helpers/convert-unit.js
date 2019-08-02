@@ -7,6 +7,9 @@ export function convertUnit([valueUnitObj,
                              newUnit,
                              unitType,
                              ...rest]) {  // eslint-disable-line no-unused-vars
+  if (!valueUnitObj) {
+    return valueUnitObj;
+  }
 
   let compatibleWithIn = Object.values(Nucos.Converters).filter(c => {
     return c.Synonyms.hasOwnProperty(valueUnitObj.unit.toLowerCase().replace(/\s/g,''));

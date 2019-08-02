@@ -20,7 +20,7 @@
             <tr class="collapse show cut-row-collapse">
               <th scope="row">{{index}}</th>
               <td>{{value-unit cut.fraction 3}}</td>
-              <td>{{value-unit cut.vapor_temp 2}}</td>
+              <td>{{value-unit (convert-unit cut.vapor_temp "C") 2}}</td>
               <td>{{cut.weathering}}</td>
             </tr>
           {{/if}}

@@ -22,7 +22,7 @@
               <th scope="row">{{index}}</th>
               <td>{{ift.interface}}</td>
               <td>{{value-unit ift.tension 3}}</td>
-              <td>{{value-unit ift.ref_temp 2}}</td>
+              <td>{{value-unit (convert-unit ift.ref_temp "C") 2}}</td>
               <td>{{ift.weathering}}</td>
             </tr>
           {{/if}}

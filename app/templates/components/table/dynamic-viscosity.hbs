@@ -19,8 +19,8 @@
           {{#if (eq dvis.weathering weathered)}}
             <tr class="collapse show dvis-row-collapse">
               <th scope="row">{{index}}</th>
-              <td>{{value-unit dvis.viscosity 3}}</td>
-              <td>{{value-unit dvis.ref_temp 2}}</td>
+              <td>{{value-unit (convert-unit dvis.viscosity "cP") 3}}</td>
+              <td>{{value-unit (convert-unit dvis.ref_temp "C") 2}}</td>
               <td>{{dvis.weathering}}</td>
             </tr>
           {{/if}}

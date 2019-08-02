@@ -19,7 +19,7 @@ export function valueUnit([valueUnitObj,
 
   if (tempUnits.has(u)) {
     sep = '°';
-    return `${v}${sep}${u}`;
+    return `${v} ${sep}${u}`;
   }
   else if (fractionUnits.has(u)) {
     return `${v}`;

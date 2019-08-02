@@ -38,7 +38,7 @@ export default LineChart.extend({
       data.push({
         name: w,
         values: weathered_cuts.map((c) => ([
-          convertUnit([c.vapor_temp, 'K']).value,
+          convertUnit([c.vapor_temp, 'C']).value,
           c.fraction.value
         ])),
         color: 'grey'
@@ -74,7 +74,7 @@ export default LineChart.extend({
     var height = this.get('chartHeight');
 
     var yValues = data.length > 0 ? data[0].values.map((v) => (v[1])) : [0, 1.0];
-    var minMax = extent(yValues);
+    var minMax = extent(yValues.concat(0.0, 1.0));
 
     return scaleLinear()
       .domain(minMax)
@@ -110,7 +110,7 @@ export default LineChart.extend({
       .attr("font-size", "1.5em")
       .attr("fill", "currentColor")
       .style("text-anchor", "middle")
-      .text("Vapor Temperature (K)");
+      .text("Vapor Temperature (\u2103)");
   },
 
   createYAxisElement: function() {

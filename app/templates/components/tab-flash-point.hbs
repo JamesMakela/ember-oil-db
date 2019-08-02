@@ -19,7 +19,7 @@
           {{#if (eq fp.weathering weathered)}}
             <tr class="collapse show fp-row-collapse">
               <th scope="row">{{index}}</th>
-              <td>{{value-unit-range fp.min_temp fp.max_temp 2}}</td>
+              <td>{{value-unit-range (convert-unit fp.min_temp "C") (convert-unit fp.max_temp "C") 2}}</td>
               <td>{{fp.weathering}}</td>
             </tr>
           {{/if}}
