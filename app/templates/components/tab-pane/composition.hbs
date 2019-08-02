@@ -1,4 +1,13 @@
 <div class="container">
+  <center>
+    <h4>
+      {{mult weathered 100}}% Evaporated
+      {{#if (eq weathered 0)}}
+        (Fresh)
+      {{/if}}
+    </h4>
+  </center>
+
   <div class="row">
     <Table::Water @oil={{oil}} @weathered={{weathered}} class="col-3"/>
 
