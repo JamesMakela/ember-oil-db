@@ -1,36 +1,19 @@
 import { helper } from '@ember/component/helper';
-import { roundRelative } from './round-relative';
+import { valueUnitRange } from './value-unit-range';
+import { valueUnitScalar } from './value-unit-scalar';
 
 
-export function valueUnit([valueUnitObj,
-                           tol,
+export function valueUnit([valueUnitObj, tol,
                            ...rest]) {  // eslint-disable-line no-unused-vars
   if (valueUnitObj == null) {
       return '';
   }
-
-  let v = roundRelative([valueUnitObj.value, tol]);
-  let u = valueUnitObj.unit;
-  let sep = ' ';
-
-  // SI Kelvin units don't have a degree, so are not included here.
-  let tempUnits = new Set(['F', 'C']);
-  let fractionUnits = new Set(['1'])
-
-  if (tempUnits.has(u)) {
-    sep = '°';
-    return `${v} ${sep}${u}`;
-  }
-  else if (fractionUnits.has(u)) {
-    return `${v}`;
+  else if (Number.isFinite(valueUnitObj.value)) {
+      return valueUnitScalar([valueUnitObj, tol]);
   }
   else {
-    let new_u = u.replace('^2', '\u00B2')
-    new_u = new_u.replace('^3', '\u00B3')
-
-    return `${v}${sep}${new_u}`;
+      return valueUnitRange([valueUnitObj, tol]);
   }
-
 }
 
 export default helper(valueUnit);

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { helper } from '@ember/component/helper';
 
 import Nucos from 'nucos/nucos';
@@ -11,12 +12,14 @@ export function convertUnit([valueUnitObj,
     return valueUnitObj;
   }
 
+  let copyObj = $.extend(true, {}, valueUnitObj);
+
   let compatibleWithIn = Object.values(Nucos.Converters).filter(c => {
-    return c.Synonyms.hasOwnProperty(valueUnitObj.unit.toLowerCase().replace(/\s/g,''));
+    return c.Synonyms.hasOwnProperty(copyObj.unit.toLowerCase().replace(/\s/g,''));
   });
 
   if (compatibleWithIn.length === 0) {
-    throw `Input unit ${valueUnitObj.unit} is not compatible with any converters`;
+    throw `Input unit ${copyObj.unit} is not compatible with any converters`;
   }
 
   let compatibleWithOut = compatibleWithIn.filter(c => {
@@ -26,11 +29,29 @@ export function convertUnit([valueUnitObj,
   if (compatibleWithOut.length === 1) {
     // This is the only converter we can use, so ignore the unitType
     let converter = compatibleWithOut[0];
-    valueUnitObj.value = Nucos.convert(converter.Name,
-                                       valueUnitObj.unit,
-                                       newUnit,
-                                       valueUnitObj.value);
-    valueUnitObj.unit = newUnit;
+
+    if (copyObj.value) {
+      copyObj.value = Nucos.convert(converter.Name,
+                                    copyObj.unit,
+                                    newUnit,
+                                    copyObj.value);
+    }
+
+    if (copyObj.min_value) {
+      copyObj.min_value = Nucos.convert(converter.Name,
+                                        copyObj.unit,
+                                        newUnit,
+                                        copyObj.min_value);
+    }
+
+    if (copyObj.max_value) {
+      copyObj.max_value = Nucos.convert(converter.Name,
+                                        copyObj.unit,
+                                        newUnit,
+                                        copyObj.max_value);
+    }
+
+    copyObj.unit = newUnit;
   }
   else if (compatibleWithOut.length > 1) {
     // multiple converters available.  Do they match our unitType?
@@ -40,22 +61,39 @@ export function convertUnit([valueUnitObj,
 
     if (compatibleWithUnitType.length === 1) {
       let converter = compatibleWithUnitType[0];
-      valueUnitObj.value = Nucos.convert(converter.Name,
-                                         valueUnitObj.unit,
-                                         newUnit,
-                                         valueUnitObj.value);
-      valueUnitObj.unit = newUnit;
+
+      if (copyObj.value) {
+        copyObj.value = Nucos.convert(converter.Name,
+                                      copyObj.unit,
+                                      newUnit,
+                                      copyObj.value);
+      }
+
+      if (copyObj.min_value) {
+        copyObj.min_value = Nucos.convert(converter.Name,
+                                          copyObj.unit,
+                                          newUnit,
+                                          copyObj.min_value);
+      }
+
+      if (copyObj.max_value) {
+        copyObj.max_value = Nucos.convert(converter.Name,
+                                          copyObj.unit,
+                                          newUnit,
+                                          copyObj.max_value);
+      }
+
+      copyObj.unit = newUnit;
     }
     else {
       throw `Specified unit type ${unitType} is not compatible with input unit`;
     }
-
   }
   else {
     throw `New unit ${newUnit} is not compatible with input unit ${valueUnitObj.unit}`;
   }
-  
-  return valueUnitObj;
+
+  return copyObj;
 }
 
 export default helper(convertUnit);

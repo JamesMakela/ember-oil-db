@@ -1,7 +1,7 @@
 <div class="container">
   <center>
     <h4>
-      {{mult weathered 100}}% Evaporated
+      {{round-relative (mult weathered 100) 2}}% Evaporated
       {{#if (eq weathered 0)}}
         (Fresh)
       {{/if}}

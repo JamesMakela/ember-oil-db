@@ -1,42 +1,30 @@
 import { helper } from '@ember/component/helper';
-import { valueUnit } from './value-unit';
-import { convertUnit } from './convert-unit';
 import { roundRelative } from './round-relative';
+import { valueUnitUnit } from './value-unit-unit';
 
 
-export function valueUnitRange([valueUnitMin, valueUnitMax,
-                                tol,
+export function valueUnitRange([valueUnitObj, tol,
                                 ...rest]) {  // eslint-disable-line no-unused-vars
-  let min, max, unit;
-
-  if (valueUnitMin) {
-    min = valueUnitMin.value;
-    unit = valueUnitMin.unit;
+  if (valueUnitObj == null) {
+      return '';
   }
 
-  if (valueUnitMax) {
-    if (unit && unit !== valueUnitMax.unit) {
-      max = convertUnit([valueUnitMax, unit]).value;  // make it same unit as min
-    }
-    else {
-      max = valueUnitMax.value;
-    }
-  }
-
+  let unit = valueUnitUnit([valueUnitObj]);
+  let min = roundRelative([valueUnitObj.min_value, tol]);
+  let max = roundRelative([valueUnitObj.max_value, tol]);
+  
   if (min && max && min === max) {
-    return valueUnit([valueUnitMin, tol]);
+    valueUnitObj.value = valueUnitObj.min_value;
+    return `${min}${unit}`
   }
   else if (min && max) {
-    return (`[${roundRelative([valueUnitMin.value, tol])}` +
-            `\u2192` +
-            `${roundRelative([valueUnitMax.value, tol])}]` +
-            ` ${unit}`);
+    return `[${min}\u2192${max}]${unit}`;
   }
   else if (min) {
-    return `>${valueUnit([valueUnitMin, tol])}`;
+    return `>${min}${unit}`;
   }
   else if (max) {
-    return `<${valueUnit([valueUnitMax, tol])}`;
+    return `<${max}${unit}`;
   }
 
   return null;
