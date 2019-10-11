@@ -10,7 +10,7 @@ export default Model.extend({
   pourPoint: attr(),
   apis: attr(),
   categoriesStr: attr(),
-  categories: hasMany(),
+  categories: attr(),
   status: attr(),
 
   // These are used in the oil details page

@@ -50,7 +50,8 @@ export default Component.extend(TableCommon, {
       width: '120px'
     }, {
       label: 'Categories',
-      valuePath: 'categoriesStr'
+      valuePath: 'categories',
+      cellComponent: 'table/cell/categories',
     }];
   }),
 
